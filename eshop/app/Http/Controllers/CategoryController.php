@@ -32,4 +32,8 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->route('admin.category');
     }
+
+    public function destroy(){
+        
+    }
 }

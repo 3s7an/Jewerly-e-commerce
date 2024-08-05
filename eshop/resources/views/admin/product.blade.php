@@ -36,6 +36,8 @@
     </div>
     <hr>
 
+</form>
+
         <table class="table table-hover">
         <tr>
             <th scope="col">Id produktu</th>
@@ -57,7 +59,11 @@
             <td>{{$product->price}}</td>
             <td>{{$product->created_at}}</td>
             <td>{{$product->updated_at}}</td>
+            <form action="{{route('products.destroy', $product->id)}}" method="post">
+                @csrf
+                @method('delete')
             <td><button type="submit" class="btn btn-sm btn-danger">X</button></td>
+            </form>
           </tr>
         @endforeach
         </table>

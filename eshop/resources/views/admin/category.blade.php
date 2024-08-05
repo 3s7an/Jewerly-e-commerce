@@ -11,8 +11,13 @@
             <span style="color: red">{{ $message }}</span>
         @enderror
 
-        <label for="parent-id">Id rodičovskej kategorie:</label>
-        <input type="text" name="parent-id" id="parent-id"></input>
+        <label for="parent-id">Rodičovská kategória:</label>
+        <select type="text" name="parent-id" id="parent-id">
+            <option value="0">Žiadna</option>
+            @foreach ($categories as $category)
+            <x-category-item :category="$category" />
+    @endforeach
+        </select>
         @error('parent-id')
             <span style="color: red">{{ $message }}</span>
         @enderror

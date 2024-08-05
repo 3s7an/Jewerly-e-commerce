@@ -43,7 +43,7 @@ class ProductController extends Controller
 
 
 
-        return redirect()->route('dashboard');
+        return redirect()->route('admin.product');
     }
 
     public function destroy($id){
@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product = Product::where('id', $id)->first();
         $product->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('admin.product');
     }
 }
 
