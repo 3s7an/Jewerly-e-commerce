@@ -11,6 +11,14 @@
             <span style="color: red">{{ $message }}</span>
         @enderror
 
+        <label for="parent-id">Id rodičovskej kategorie:</label>
+        <input type="text" name="parent-id" id="parent-id"></input>
+        @error('parent-id')
+            <span style="color: red">{{ $message }}</span>
+        @enderror
+
+
+
         <br>
 
     <button type="submit" class="btn btn-primary btn-sm">Pridať</button>
@@ -39,7 +47,9 @@
           </tr>
           @endforeach
     </table>
-
+    @foreach ($categories as $category)
+            <x-category-item :category="$category" />
+    @endforeach
     </div>
     </div>
 

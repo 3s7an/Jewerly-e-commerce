@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::all();
+        $categories = Category::tree()->get()->toTree();
         return view('admin.category')->with('categories', $categories);
 
 
@@ -17,17 +17,19 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
-
         $request->validate([
-            'category-name' => 'min:3|max:20|required'
+            'category-name' => 'required|min:3|max:20'
         ]);
 
         $category = Category::create([
-            'name' => request('category-name', '')
+            'name' => $request->input('category-name', ''),
+            'parent_id' => $request->input('parent-id', '')
+
+
         ]);
 
-        $category->save();
 
+        $category->save();
         return redirect()->route('admin.category');
     }
 }
