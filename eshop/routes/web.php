@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
-    Route::post('/category{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::delete('/category{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 

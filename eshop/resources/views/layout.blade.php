@@ -15,6 +15,23 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Eshop</title>
+    <style>
+
+        .sidebar {
+            height: 100vh;
+
+            background-color: #3e454a;
+            color: #ffffff;
+        }
+        .sidebar a {
+            color: #ffffff;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
