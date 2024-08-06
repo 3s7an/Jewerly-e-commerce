@@ -14,17 +14,19 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 //ADMIN ROUTY -> TREBA PREROBIT DO RESOURCE ROUTY S MIDDLEWAROM
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
     Route::delete('/products{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-
-    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/products', [ProductController::class, 'index'])->name('admin.product');
 
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
 
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+
+    Route::post('/category{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 

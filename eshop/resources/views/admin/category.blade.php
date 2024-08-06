@@ -51,12 +51,19 @@
             <td><button type="submit" class="btn btn-sm btn-danger">X</button></td>
           </tr>
           @endforeach
+
+
     </table>
+
+    {{ $categories->links() }}
+
+
+    {{--}}
     @foreach ($categories as $category)
             <x-category-item :category="$category" />
     @endforeach
     </div>
-    </div>
+    </div> {{--}}
 
 
 

@@ -9,7 +9,8 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::tree()->get()->toTree();
+        $categories = Category::orderBy('parent_id', 'ASC')->paginate(5);
+        //$categories = Category::tree()->get()->toTree();//
         return view('admin.category')->with('categories', $categories);
 
 
@@ -33,7 +34,10 @@ class CategoryController extends Controller
         return redirect()->route('admin.category');
     }
 
-    public function destroy(){
-        
+    public function destroy($id){
+        $category = Category::where('id', $id)->first();
+        $category->delete();
+
+        return redirect()->route('admin.category');
     }
 }
