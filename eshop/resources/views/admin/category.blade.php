@@ -15,7 +15,7 @@
             <select type="text" name="parent-id" id="parent-id">
                 <option value="0">Žiadna</option>
                 @foreach ($categories as $category)
-                    <x-category-item :category="$category" />
+                    <option value="{{ $category->id }}">{{ $category->name}}</option>
                 @endforeach
             </select>
             @error('parent-id')
@@ -34,6 +34,7 @@
 
                 <tr>
                     <th scope="col">Id kategorie</th>
+                    <th scope="col">Id rodičovskej kategorie</th>
                     <th scope="col">Nazov kategorie</th>
                     <th scope="col">Slug kategorie</th>
                     <th scope="col">Datum vzniku kategorie</th>
@@ -44,6 +45,7 @@
                 @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
+                        <td>{{ $category->parent_id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->slug }}</td>
                         <td>{{ $category->created_at }}</td>
@@ -62,8 +64,14 @@
 
             </table>
 
-
+;
             {{ $categories->links() }}
+
+
+
+
+
+
 
 
 

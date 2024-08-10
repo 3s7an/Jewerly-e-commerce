@@ -10,29 +10,39 @@ class CategoryController extends Controller
     public function index(){
 
         $categories = Category::orderBy('parent_id', 'ASC')->paginate(5);
-        //$categories = Category::tree()->get()->toTree();//
+
         return view('admin.category')->with('categories', $categories);
 
 
 
+
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'category-name' => 'required|min:3|max:20'
-        ]);
+    public function store(Request $request)
+{
+    $request->validate([
+        'category-name' => 'required|min:3|max:20',
+        'parent_id' => 'nullable|exists:categories,id'
+    ]);
 
-        $category = Category::create([
-            'name' => $request->input('category-name', ''),
-            'parent_id' => $request->input('parent-id', '')
+    $category = new Category([
+        'name' => $request->input('category-name', '')
+    ]);
 
+    if ($request->filled('parent-id') && $request->input('parent-id') != 0) {
+        $parentCategory = Category::find($request->input('parent-id'));
 
-        ]);
-
-
-        $category->save();
-        return redirect()->route('admin.category');
+        if ($parentCategory) {
+            $category->appendToNode($parentCategory)->save();
+        } else {
+            return redirect()->back()->withErrors(['parent-id' => 'Parent category not found.']);
+        }
+    } elseif ($request->input('parent-id') == 0) {
+        $category->saveAsRoot();
     }
+
+    return redirect()->back()->with('success', 'Category created successfully!');
+}
 
     public function destroy($id){
 

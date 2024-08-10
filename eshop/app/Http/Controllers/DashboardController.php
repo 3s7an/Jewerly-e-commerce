@@ -19,9 +19,17 @@ class DashboardController extends Controller
 
     $products = $query->get();
 
-    $categories = Category::all();
 
-    return view('dashboard', ['products' => $products, 'categories' => $categories]);
+    $categories = Category::get()->toTree();
+
+
+
+
+
+   return view('dashboard')->with([
+    'categories' => $categories,
+    'products' => $products,
+]);
 }
 }
 

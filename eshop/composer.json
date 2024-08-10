@@ -7,9 +7,10 @@
     "require": {
         "php": "^8.2",
         "cviebrock/eloquent-sluggable": "^11.0",
+        "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "staudenmeir/laravel-adjacency-list": "^1.0"
+        "staudenmeir/laravel-adjacency-list": "^1.21"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

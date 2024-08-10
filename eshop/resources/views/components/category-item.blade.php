@@ -1,9 +1,12 @@
-@props(['category'])
-<option value="{{ $category->id }}">  {{ $category->name }} </option>
+<li>
+    {{ $category->name }}
 
-    @foreach ($category->children as $child)
-        <div style="margin-left: 20px">
-            <x-category-item :category="$child" />
-        </div>
-    @endforeach
+    @if($category->children->isNotEmpty())
+        <ul>
+            @foreach($category->children as $childCategory)
+                @include('components.category-item', ['category' => $childCategory])
+            @endforeach
+        </ul>
+    @endif
+</li>
 

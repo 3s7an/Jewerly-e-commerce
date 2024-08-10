@@ -15,7 +15,8 @@ class ProductController extends Controller
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
 
-        $categories = Category::all();
+        $categories = Category::tree()->get()->toTree();
+       
 
         return view('admin.product',['products' => $products, 'categories' => $categories]);
     }
