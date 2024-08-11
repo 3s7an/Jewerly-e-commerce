@@ -15,37 +15,39 @@ class ProductController extends Controller
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
 
-        $categories = Category::tree()->get()->toTree();
-       
+        $categories = Category::all();
+
 
         return view('admin.product',['products' => $products, 'categories' => $categories]);
     }
 
 
+
     public function store(Request $request)
-    {
+{
+    // Validácia vstupov
+    $validatedData = $request->validate([
+        'product-name' => 'required|min:3|max:40',
+        'product-description' => 'required|min:5|max:200',
+        'product-price' => 'required|numeric',
+        'product-category' => 'nullable|numeric|exists:categories,id', // Umožňuje null a kontroluje existenciu v tabuľke 'categories'
+    ]);
 
-       $request->validate([
-        'product-name' => 'min:3|max:40|required',
-        'product-description' => 'min:5|max:200|required',
-        'product-price' => 'numeric|required'
+    // Ak 'product-category' nie je zadané (napr. prázdny reťazec), nastavíme ho na null alebo inú predvolenú hodnotu
+    $categoryId = $validatedData['product-category'] ;
 
-       ]);
+    // Vytvorenie nového produktu pomocou validovaných údajov
+    $product = Product::create([
+        'name' => $validatedData['product-name'],
+        'description' => $validatedData['product-description'],
+        'price' => $validatedData['product-price'],
+        'category_id' => $categoryId,
+    ]);
 
+    // Presmerovanie po úspešnom uložení produktu
+    return redirect()->route('admin.product');
+}
 
-        $product = Product::create([
-            'name' => request('product-name', ''),
-            'description' => request('product-description', ''),
-            'price' => request('product-price' , '')
-
-        ]);
-
-        $product->save();
-
-
-
-        return redirect()->route('admin.product');
-    }
 
     public function destroy($id){
 

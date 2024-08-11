@@ -8,20 +8,29 @@
 
     <div class="d-flex flex-column align-items-center">
         <h4>Pridať produkt :</h4>
-        <label for="product-name">Názov produktu:</label>
+        <label for="product-name">Názov :</label>
             <input type="text" name="product-name" id="product-name"></input>
             @error('product-name')
             <span style="color: red">{{ $message }}</span>
         @enderror
 
-        <label for="product-description">Pridať produkt:</label>
+        <label for="product-category">Kategória :</label>
+        <select name="product-category" id="product-category">
+            <option value="0" selected>Žiadna</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+
+
+        <label for="product-description">Popis :</label>
             <textarea name="product-description" id="product-description" cols="30" rows="2"></textarea>
             @error('product-description')
         <span style="color: red">{{ $message }}</span>
     @enderror
 
     <div class="d-flex flex-column align-items-center">
-        <label for="product-name">Cena</label>
+        <label for="product-name">Cena : </label>
             <input type="text" name="product-price" id="product-price"></input>
             @error('product-price')
             <span style="color: red">{{ $message }}</span>
@@ -42,7 +51,7 @@
         <tr>
             <th scope="col">Id produktu</th>
             <th scope="col">Nazov produktu</th>
-            <th scope="col">Slug produktu</th>
+            <th scope="col">Kategoria produktu</th>
             <th scope="col">Popis produktu</th>
             <th scope="col">Cena produktu</th>
             <th scope="col">Datum vzniku kategorie</th>
@@ -54,7 +63,7 @@
         <tr>
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
-            <td>{{$product->slug}}</td>
+            <td>{{$product->category_id}}</td>
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->created_at}}</td>
@@ -70,8 +79,6 @@
 
     </div>
 
-    @foreach ($categories as $category)
-            <x-category-item :category="$category" />
-    @endforeach
+
 </form>
 @endsection

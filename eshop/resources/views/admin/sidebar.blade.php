@@ -17,8 +17,6 @@
         <li class="nav-item">
             <a href=" {{route('admin.category')}} " class="nav-link">Kategórie</a>
         </li>
-        <li class="nav-item">
-            <a href="admin/subcategories" class="nav-link ">Subkategórie</a>
-        </li>
+       
     </ul>
 </div>

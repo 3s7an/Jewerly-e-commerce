@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -56,29 +57,36 @@ class AuthController extends Controller
     }
 
 
-       
+
     public function autenthificate(Request $request)
-    {
-        $validated = $request->validate(
-            [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]
-            );
+{
+    // Validácia vstupov
+    $validated = $request->validate(
+        [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]
+    );
 
-            if(auth()->attempt($validated)){
-                $request->session()->regenerate();
-                return redirect()->route('dashboard');
-            }
+    // Pokus o autentifikáciu používateľa pomocou emailu a hesla
+    if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+        // Obnoví sa session ID pre bezpečnosť
+        $request->session()->regenerate();
 
-            return redirect()->route('login')->withErrors(
-                ['email' => 'There is no matching user with these email and password']
-            );
+        // Presmerovanie na dashboard po úspešnej autentifikácii
+        return redirect()->route('dashboard');
     }
+
+    // Pri neúspešnej autentifikácii sa používateľ presmeruje späť na login s chybovou správou
+    return redirect()->route('login')->withErrors(
+        ['email' => 'These credentials do not match our records.']
+    );
+}
+
 
     public function logout(Request $request){
 
-        auth()->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
