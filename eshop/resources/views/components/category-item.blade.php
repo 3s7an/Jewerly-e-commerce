@@ -1,8 +1,8 @@
-<li>
-    {{ $category->name }}
+<li class="nav-item">
+    <a href="" class="nav-link">{{ $category->name }}</a>
 
     @if($category->children->isNotEmpty())
-        <ul>
+        <ul class="nav nav-pills flex-column mb-auto">
             @foreach($category->children as $childCategory)
                 @include('components.category-item', ['category' => $childCategory])
             @endforeach

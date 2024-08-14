@@ -15,44 +15,48 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Eshop</title>
-    <style>
 
-        .sidebar {
-            height: 100vh;
-
-            background-color: #3e454a;
-            color: #ffffff;
-        }
-        .sidebar a {
-            color: #ffffff;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
-
-
-   @include('includes.navbar')
-   <div class="d-flex">
-    @include('includes.dashboard-sidebar')
-
-
+    @include('includes.navbar')
 
     <div class="container py-4">
-        @yield('content')
+
+        <div class="d-flex flex-column">
+
+            <span>Meno a priezvisko : </span>
+            <textarea name="" id="" cols="10" rows="1" style="width: 40%"></textarea>
+
+            <span>Email : </span>
+            <textarea name="" id="" cols="10" rows="1" style="width: 40%"></textarea>
+
+
+
+            <span>Ulica : </span>
+            <textarea name="" id="" cols="10" rows="1" style="width: 40%"></textarea>
+
+            <div class="d-flex">
+                <div class="d-flex">
+                    <span class="mt-2">PSČ : </span>
+                    <textarea class="mt-2" name="" id="" cols="20" rows="1"></textarea>
+                </div>
+                <div class="d-flex">
+                    <span class="mt-2 mx-2">Mesto : </span>
+                    <textarea class="mt-2" name="" id="" cols="20" rows="1"></textarea>
+                </div>
+
+
+            </div>
+        </div>
+        <button class="mt-4" type="submit">Uložiť údaje</button>
     </div>
-   </div>
 
 
-    {{--FOOTER WITH LINKS--}}
+
+
+    {{-- FOOTER WITH LINKS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
 </body>
-
-</html>
