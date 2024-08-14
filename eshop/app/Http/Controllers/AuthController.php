@@ -26,7 +26,7 @@ class AuthController extends Controller
         //validacia
         $validated = $request ->validate(
             [
-                'name' => 'required|min:5|max:30',
+
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|confirmed|min:4'
             ]
@@ -35,14 +35,14 @@ class AuthController extends Controller
         //vytvorenie noveho uzivatela na zaklade dat z inputov
         User::create(
             [
-            'name' => $validated['name'],
+
             'email' => $validated['email'],
             'password' => $validated['password']
 
             ]
         );
 
-        return redirect()->route('dashboard');
+        return redirect()->route('admin.login');
 
 
     }
