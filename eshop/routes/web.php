@@ -54,6 +54,10 @@ Route::match(['get', 'post'], '/profile', [ProfileController::class, 'index'])->
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
+Route::get('/profile/{user}/edit', [UserController::class, 'edit'])->name('profile.edit');
+
+Route::get('/profile/{user}', [UserController::class, 'update'])->name('profile.update');
+
 
 
 
