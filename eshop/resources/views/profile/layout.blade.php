@@ -19,6 +19,9 @@
 </head>
 
 <body>
+
+    @include('includes.navbar')
+
     <div class="container py-4">
         @yield('content')
 

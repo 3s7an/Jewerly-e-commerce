@@ -31,9 +31,30 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit(User $user){
+    public function editData(User $user){
 
-        return view('ideas.show'); 
+        return view('profile.profile-change-user-data');
 
+    }
+
+    public function updateData(User $user)
+    {
+        $validated = request()->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'street' => 'required',
+            'postalCode' => 'required',
+            'city' => 'required|min:3|max:40'
+        ]);
+
+        $user->update([
+            'name' => $validated['firstName'],
+            'surname' => $validated['lastName'],
+            'street' => $validated['street'],
+            'zipcode' => $validated['postalCode'],
+            'city' => $validated['city'],
+        ]);
+
+        return redirect()->route('profile.index');
     }
 }
