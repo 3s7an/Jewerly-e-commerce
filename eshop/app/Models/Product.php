@@ -12,11 +12,15 @@ class Product extends Model
 
 
     protected $fillable = [
+        'image',
         'name',
         'description',
         'price',
         'category_id',
     ];
+
+
+
 
     public function sluggable(): array
 {

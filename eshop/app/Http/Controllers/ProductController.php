@@ -27,6 +27,7 @@ class ProductController extends Controller
 {
     // Validácia vstupov
     $validatedData = $request->validate([
+        'product-image' => 'required',
         'product-name' => 'required|min:3|max:40',
         'product-description' => 'required|min:5|max:200',
         'product-price' => 'required|numeric',
@@ -36,8 +37,14 @@ class ProductController extends Controller
     // Ak 'product-category' nie je zadané (napr. prázdny reťazec), nastavíme ho na null alebo inú predvolenú hodnotu
     $categoryId = $validatedData['product-category'] ;
 
+    if(request()->has('image')){
+        $imagePath = request()->file('image')->store('product', 'public');
+        $validatedData['image'] = $imagePath;
+    };
+
     // Vytvorenie nového produktu pomocou validovaných údajov
     $product = Product::create([
+        'image' => $validatedData['product-image'],
         'name' => $validatedData['product-name'],
         'description' => $validatedData['product-description'],
         'price' => $validatedData['product-price'],

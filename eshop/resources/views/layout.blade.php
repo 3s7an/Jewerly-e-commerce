@@ -19,13 +19,8 @@
 
         .sidebar {
             height: 100vh;
+            }
 
-            background-color: #3e454a;
-            color: #ffffff;
-        }
-        .sidebar a {
-            color: #ffffff;
-        }
         .content {
             margin-left: 250px;
             padding: 20px;
@@ -38,6 +33,7 @@
 
 
    @include('includes.navbar')
+   @include('includes.navbar-search')
    <div class="d-flex">
     @include('includes.dashboard-sidebar')
 

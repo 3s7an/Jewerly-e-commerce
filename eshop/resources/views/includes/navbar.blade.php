@@ -1,15 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-
-    <div class="container">
-
-        <a class="navbar-brand" href=" {{route('dashboard')}} ">ESHOP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar d-flex justify-content-end">
 
 
-
+    <div class="d-flex justify-content-end">
 
             @auth
 
@@ -43,10 +35,8 @@
             @guest
 
 
-                <a href="{{ route('login') }}">login</a>
+                <a class="mx-4" href="{{ route('login') }}">login</a>
             @endguest
 
         </div>
-    </div>
-    </div>
 </nav>
