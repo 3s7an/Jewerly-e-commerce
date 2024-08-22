@@ -1,4 +1,4 @@
-<div class="sidebar d-flex flex-column p-3" style="width: 250px;">
+<div class="sidebar d-flex flex-column p-3" style="width: 250px; background-color:#f0ad4e;">
     <h2 class="text-center text-white">Admin Panel</h2>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
@@ -17,6 +17,6 @@
         <li class="nav-item">
             <a href=" {{route('admin.category')}} " class="nav-link">Kategórie</a>
         </li>
-       
+
     </ul>
 </div>

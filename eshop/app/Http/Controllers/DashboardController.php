@@ -13,8 +13,8 @@ class DashboardController extends Controller
 {
     $query = Product::orderBy('created_at', 'DESC');
 
-    if (FacadeRequest::has('search')) {
-        $query->where('name', 'like', '%' . FacadeRequest::get('search', '') . '%');
+    if (request()->has('search')) {
+        $query->where('name', 'like', '%' . request()->get('search', '') . '%');
     }
 
     $products = $query->get();

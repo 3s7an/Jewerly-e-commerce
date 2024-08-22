@@ -19,6 +19,7 @@
 
         .sidebar {
             height: 100vh;
+            background: #f0ad4e;
             }
 
         .content {
