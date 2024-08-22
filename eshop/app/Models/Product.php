@@ -31,5 +31,12 @@ class Product extends Model
         ]
     ];
 }
+
+public function getImageURL(){
+    if($this->image){
+        return url('storage/' . $this->image);
+    }
+    return 'http://www.w3.org/2000/svg';
+}
 }
 

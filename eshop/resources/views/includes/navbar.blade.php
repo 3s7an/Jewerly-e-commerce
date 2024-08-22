@@ -1,4 +1,4 @@
-<nav class="navbar d-flex justify-content-end">
+<nav class="navbar d-flex justify-content-end bg-body-tertiary">
 
 
     <div class="d-flex justify-content-end">
@@ -6,7 +6,7 @@
             @auth
 
                 <ul>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">{{ Auth::user()->email }}</a>
                         <div class="dropdown-menu">

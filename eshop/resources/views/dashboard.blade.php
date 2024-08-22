@@ -8,24 +8,24 @@
 
 @foreach ($products as $product)
 
-<div class="card mb-3" style="width: 20%">
+<div class="card mb-3 shadow-sm" style="width: 20%;">
+    <!-- Obrázok produktu -->
+    <img src="{{$product->getImageURL()}}" class="card-img-top" alt="{{$product->name}}">
 
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-      <rect width="100%" height="100%" fill="#868e96"></rect>
-      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Obrázok produktu</text>
-    </svg>
+    <!-- Telo karty -->
     <div class="card-body">
-      <p class="card-text">{{$product->name}}</p>
+        <!-- Názov produktu -->
+        <p class="card-text text-center font-weight-bold">{{$product->name}}</p>
     </div>
+
     <hr>
 
-    <div class="card-body">
-      <span>Cena : {{$product->price}}</span>
-      <br>
-      <a href="#" class="card-link">Do košíku</a>
+    <!-- Cena a tlačidlo -->
+    <div class="card-body d-flex justify-content-between align-items-center">
+        <span class="text-primary h5 mb-0">Cena: €{{$product->price}}</span>
+        <a href="#" class="btn btn-outline-primary">Do košíku</a>
     </div>
-
-  </div>
+</div>
 
 
     @endforeach

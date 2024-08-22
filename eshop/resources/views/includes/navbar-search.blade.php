@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <div class="container d-flex justify-content-center">
         <a class="navbar-brand" href="{{ route('dashboard') }}">eshop</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
                 <button class="btn btn-secondary" type="submit">Search</button>
             </form>
 
-            <a class="nav-link" href="#">kosik</a>
+
         </div>
     </div>
 </nav>
