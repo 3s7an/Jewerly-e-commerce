@@ -24,6 +24,9 @@
                             <button class="btn btn-danger btn-small" type="submit">Odhlásiť sa</button>
                         </form>
                         </div>
+                        <div>
+                            <a href="{{ route('cart.index') }}">Košík</a>
+                        </div>
                     </li>
 
                 </ul>

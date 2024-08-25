@@ -3,84 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Darryldecode\Cart\Cart as CartModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index()
-    {
-        $cartItems = Cart::getContent();
-        return view('cart.index', compact('cartItems'));
-    }
+   // Pridanie produktu do košíka
+   public function add(Request $request, $productId)
+   {
+       $product = Product::findOrFail($productId);
 
-    public function add(Request $request)
-    {
-        Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => [] // Voliteľné: pridajte ďalšie atribúty
-        ]);
+       // Skontrolujte, či položka už existuje v košíku
+       $existingCartItem = Cart::where('user_id', Auth::id())
+           ->where('product_id', $productId)
+           ->first();
 
-        return redirect()->back()->with('success', 'Produkt bol pridaný do košíka!');
-    }
+       if ($existingCartItem) {
+           // Ak položka existuje, aktualizujte množstvo
+           $existingCartItem->quantity += $request->input('quantity', 1);
+           $existingCartItem->save();
+       } else {
+           // Inak pridajte novú položku do košíka
+           Cart::create([
+               'user_id' => Auth::id(),
+               'product_id' => $productId,
+               'quantity' => $request->input('quantity', 1),
+           ]);
+       }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'quantity' => 'required|integer|min:1',
-        ]);
+       return redirect()->back()->with('success', 'Produkt bol pridaný do košíka!');
+   }
 
-      
-        // Pridajte aktualizovanú položku
-        Cart::add([
-            'id' => $id,
-            'name' => 'Updated Item Name', // Môžete použiť aktuálny názov alebo iný
-            'price' => 10.00, // Aktualizujte podľa potreby
-            'quantity' => $request->input('quantity'),
-        ]);
+   // Zobrazenie košíka
+   public function index()
+   {
+       $cartItems = Cart::with('product')
+           ->where('user_id', Auth::id())
+           ->get();
 
-        return redirect()->back()->with('success', 'Položka v košíku bola aktualizovaná!');
-    }
-    public function remove($id)
-    {
-        Cart::remove($id);
-        return redirect()->back()->with('success', 'Produkt bol odstránený z košíka!');
-    }
+       return view('cart.index', compact('cartItems'));
+   }
 
-    public function clear()
-    {
-        Cart::clear();
-        return redirect()->back()->with('success', 'Košík bol vymazaný!');
-    }
+   // Aktualizácia množstva v košíku
+   public function update(Request $request, $id)
+   {
+       $request->validate([
+           'quantity' => 'required|integer|min:1',
+       ]);
 
-    public function saveCartToDatabase()
-    {
-        $cart = Cart::getContent();
-        $userCart = Cart::updateOrCreate(
-            ['user_id' => Auth::id()],
-            ['cart_data' => $cart->toArray()]
-        );
+       $cartItem = Cart::find($id);
+       if ($cartItem && $cartItem->user_id == Auth::id()) {
+           $cartItem->quantity = $request->input('quantity');
+           $cartItem->save();
 
-        return redirect()->back()->with('success', 'Košík bol uložený!');
-    }
+           return redirect()->back()->with('success', 'Položka bola aktualizovaná!');
+       }
 
-    public function loadCartFromDatabase()
-    {
-        $userCart = Cart::where('user_id', Auth::id())->first();
+       return redirect()->back()->with('error', 'Položka neexistuje alebo nemáte prístup.');
+   }
 
-        if ($userCart) {
-            Cart::clear();
-            foreach ($userCart->cart_data as $item) {
-                Cart::add($item);
-            }
+   // Odstránenie položky z košíka
+   public function remove($id)
+   {
+       $cartItem = Cart::find($id);
+       if ($cartItem && $cartItem->user_id == Auth::id()) {
+           $cartItem->delete();
+           return redirect()->back()->with('success', 'Položka bola odstránená z košíka!');
+       }
 
-            return redirect()->back()->with('success', 'Košík bol načítaný!');
-        }
-
-        return redirect()->back()->with('error', 'Nemáte uložený košík.');
-    }
+       return redirect()->back()->with('error', 'Položka neexistuje alebo nemáte prístup.');
+   }
 }

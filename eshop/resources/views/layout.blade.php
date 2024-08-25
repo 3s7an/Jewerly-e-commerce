@@ -37,7 +37,7 @@
    @include('includes.navbar-search')
 
    <div class="d-flex">
-    @include('includes.dashboard-sidebar')
+    
 
 
 

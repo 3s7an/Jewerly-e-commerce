@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-//ADMIN ROUTY -> TREBA PREROBIT DO RESOURCE ROUTY S MIDDLEWAROM
+// ADMIN ROUTY -> TREBA PREROBIT DO RESOURCE ROUTY S MIDDLEWAROM
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -36,27 +37,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 
 
-//routa na registraciu
+// Auth routy
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 Route::post('/register', [AuthController::class, 'store']);
 
-//routa na prihlasenie
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthController::class, 'autenthificate']);
 
-//routa na logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//routa na profil
-Route::match(['get', 'post'], '/profile', [ProfileController::class, 'index'])->name('profile.index');
-
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-
-Route::get('/profile/{user}/edit', [UserController::class, 'editData'])->name('profile.edit');
-
-Route::put('/profile/{user}', [UserController::class, 'updateData'])->name('profile.update');
+// Cart routy
 
 
 
