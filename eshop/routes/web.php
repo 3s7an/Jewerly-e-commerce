@@ -50,9 +50,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Cart routy
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::middleware('auth')->group(function () {
 
-Route::post('/cart', [CartController::class, 'store'])->name('cart.add');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+    Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+});
 
 
 

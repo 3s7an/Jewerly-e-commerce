@@ -10,16 +10,13 @@
     <div class="card-body d-flex flex-column justify-content-between align-items-center">
         <span class="text-primary h5 mb-0">Cena: €{{ $product->price }}</span>
 
-        
         <form action="{{ route('cart.add') }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-            <div class="d-flex flex-column align-items-center">
-                <button class="btn btn-warning btn-sm mt-4" type="submit" name="cart-send">Do košíku</button>
-            </div>
+            <button class="btn btn-warning btn-sm mt-4" type="submit" name="cart-send">Do košíku</button>
         </form>
     </div>
 </div>
+
 
 
