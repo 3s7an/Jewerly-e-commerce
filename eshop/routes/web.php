@@ -50,7 +50,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Cart routy
 
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
+Route::post('/cart', [CartController::class, 'store'])->name('cart.add');
 
 
 

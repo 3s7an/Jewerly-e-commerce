@@ -24,7 +24,7 @@ class AuthController extends Controller
     public function store(Request $request){
 
         //validacia
-        $validated = $request ->validate(
+        $validated = $request->validate(
             [
 
                 'email' => 'required|email|unique:users,email',
@@ -42,7 +42,7 @@ class AuthController extends Controller
             ]
         );
 
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
 
 
     }
