@@ -61,9 +61,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 
+// Order routy
+
+
+
+// Nezaradena routa
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
+
+// Profile routy
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
+Route::get('/profile/{user}/edit', [UserController::class, 'editData'])->name('profile.edit');
+
+Route::put('/profile/{user}', [UserController::class, 'updateData'])->name('profile.update');
 
 
 

@@ -22,7 +22,7 @@
             @enderror
             </div>
 
-            <button class="btn btn-primary mt-4" type="submit">Zmeniť heslo</button>
+            <button class="btn btn-warning mt-4" type="submit">Zmeniť heslo</button>
 
 
 
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary mt-4" type="submit">Zmeniť údaje</button>
+            <button class="btn btn-warning mt-4" type="submit">Zmeniť údaje</button>
         </form>
     </div>
 
