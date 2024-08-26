@@ -29,7 +29,7 @@ class ProductController extends Controller
     $validatedData = $request->validate([
         'product-image' => 'required|image', // Pridaná validácia pre typ súboru
         'product-name' => 'required|min:3|max:40',
-        'product-description' => 'required|min:5|max:200',
+        'product-description' => 'required|min:5|max:250',
         'product-price' => 'required|numeric',
         'product-category' => 'nullable|numeric|exists:categories,id', // Umožňuje null a kontroluje existenciu v tabuľke 'categories'
     ]);
@@ -52,6 +52,10 @@ class ProductController extends Controller
     // Presmerovanie po úspešnom uložení produktu
     return redirect()->route('admin.product');
 }
+
+    public function show(Product $product){
+        return view('includes.product-show', compact('product'));
+    }
 
 
     public function destroy($id){

@@ -20,7 +20,11 @@
                     <td>${{ $item->product->price }}</td>
                     <td>${{ $item->product->price * $item->quantity }}</td>
                     <td>
+                        <form action="{{route('cart.remove', $item->id)}}" method="POST">
+                            @csrf
+                            @method('delete')
                         <a href="{{ route('cart.remove', $item->id) }}" class="btn btn-danger btn-sm">Remove</a>
+                        </form>
                     </td>
                 </tr>
             @endforeach

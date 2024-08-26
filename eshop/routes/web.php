@@ -11,9 +11,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+
+// Dashboard routa
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-// ADMIN ROUTY -> TREBA PREROBIT DO RESOURCE ROUTY S MIDDLEWAROM
+// Admin routy
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -59,6 +61,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
 
 

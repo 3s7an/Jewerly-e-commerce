@@ -1,10 +1,12 @@
 <div class="card mb-3 shadow-sm" style="width: 20%;">
-    <img src="{{ $product->getImageURL() }}" class="card-img-top" alt="{{ $product->name }}">
+    <img src="{{ $product->getImageURL() }}" class="card-img-top p-3" alt="{{ $product->name }}">
 
     <div class="card-body">
-        <a href="#">
+
+        <a href="{{ route('products.show', $product->id)}}">
         <p class="card-text text-center font-weight-bold">{{ $product->name }}</p>
         </a>
+
     </div>
 
     <hr>

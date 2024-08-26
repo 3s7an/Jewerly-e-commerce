@@ -52,7 +52,7 @@
             @guest
 
 
-                <a class="mx-4" href="{{ route('login') }}">login</a>
+                <a class="mx-4 text-warning" href="{{ route('login') }}">Prihláste sa</a>
             @endguest
 
         </div>
