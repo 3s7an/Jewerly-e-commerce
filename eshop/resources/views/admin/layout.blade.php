@@ -37,7 +37,7 @@
 
 <body>
 
-    @include('includes.navbar')
+
     @include('includes.navbar-search')
     <div class="d-flex">
     @include('admin.sidebar')

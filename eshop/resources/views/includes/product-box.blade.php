@@ -2,7 +2,9 @@
     <img src="{{ $product->getImageURL() }}" class="card-img-top" alt="{{ $product->name }}">
 
     <div class="card-body">
+        <a href="#">
         <p class="card-text text-center font-weight-bold">{{ $product->name }}</p>
+        </a>
     </div>
 
     <hr>
@@ -13,7 +15,7 @@
         <form action="{{ route('cart.add') }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <button class="btn btn-warning btn-sm mt-4" type="submit" name="cart-send">Do košíku</button>
+            <button class="btn btn-warning btn-sm mt-4" type="submit" name="cart-send"><i class="fa-solid fa-cart-shopping"></i> Do košíku</button>
         </form>
     </div>
 </div>

@@ -20,7 +20,7 @@
 
 <body>
 
-    @include('includes.navbar')
+    @include('includes.navbar-search')
 
     <div class="container py-4">
         @yield('content')

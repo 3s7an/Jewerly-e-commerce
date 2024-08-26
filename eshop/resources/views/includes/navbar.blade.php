@@ -1,10 +1,10 @@
-<nav class="navbar d-flex justify-content-end bg-body-tertiary">
+
 
 
     <div class="d-flex justify-content-end">
 
             @auth
-
+                <div class="d-flex">
                 <ul>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
@@ -22,14 +22,16 @@
 
 
                             <button class="btn btn-danger btn-small" type="submit">Odhlásiť sa</button>
+                        </ul>
                         </form>
                         </div>
                         <div>
                             <a href="{{ route('cart.index') }}">Košík</a>
                         </div>
-                    </li>
+                    
 
-                </ul>
+
+            </div>
 
 
 
@@ -42,4 +44,3 @@
             @endguest
 
         </div>
-</nav>
