@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
+    // Zobrazenie produktov v admin sekcii
     public function index(){
 
 
@@ -53,11 +55,19 @@ class ProductController extends Controller
     return redirect()->route('admin.product');
 }
 
+
+
+    // Rozkliknutie produktu v dashboard sekcii
     public function show(Product $product){
         return view('includes.product-show', compact('product'));
     }
 
-    public function edit(Product $product){
+
+
+
+    // Editovanie produktu v admin sekcii
+    public function edit(){
+
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
         $categories = Category::all();
@@ -66,11 +76,38 @@ class ProductController extends Controller
     }
 
 
+
+    // Zmeny produktu v admin sekcii
+    public function update(Product $product, Request $request){
+
+        // Validácia zmien produktu
+        $validated = $request->validate([
+            'name' => 'min:3|max:20',
+            'description' => 'min:3|max:20',
+            'price' => 'min:3|max:20',
+        ]);
+
+        // Updatnutie produktov, ulozenie novych udajov z inputov do databaze
+        $product->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+        ]);
+    }
+
+
+
+
+    // Odstranenie produktu v admin sekcii
     public function destroy($id){
 
+        // Najdenie produktu
         $product = Product::where('id', $id)->first();
+
+        // Zmazanie produktu
         $product->delete();
 
+        // Presmerovanie
         return redirect()->route('admin.product');
     }
 }

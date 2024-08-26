@@ -5,7 +5,7 @@
     @csrf
 
 
-
+    <!-- Formulár na pridávanie produktu -->
     <div class="container mt-4">
         <h4 class="text-center mb-4">Pridať produkt :</h4>
 
@@ -57,10 +57,13 @@
 
         <hr class="mt-4">
     </div>
+    <!-- KONIEC FORMULARU -->
 
 
 </form>
+            <!-- TABULKA -->
 
+            <!-- Hlavicka tabulky -->
         <table class="table table-hover">
         <tr>
             <th scope="col">Id produktu</th>
@@ -73,13 +76,14 @@
             <th scope="col"></th>
           </tr>
 
+          <!-- Telo tabulky -->
           @foreach ($products as $product)
           <tr>
               <td>{{$product->id}}</td>
-              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->name}}</textarea></td>
+              <td><textarea name="product-name" id="description" cols="10" rows="5" class="form-control">{{$product->name}}</textarea></td>
               <td>{{$product->category_id}}</td>
-              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->description}}</textarea></td>
-              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->price}}</textarea></td>
+              <td><textarea name="product-description" id="description" cols="10" rows="5" class="form-control">{{$product->description}}</textarea></td>
+              <td><textarea name="product-price" id="description" cols="10" rows="5" class="form-control">{{$product->price}}</textarea></td>
               <td>{{$product->created_at}}</td>
               <td>{{$product->updated_at}}</td>
 
@@ -105,6 +109,7 @@
       @endforeach
 
         </table>
+        <!-- KONIEC TABULKY -->
 
     </div>
 
