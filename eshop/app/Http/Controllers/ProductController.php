@@ -57,6 +57,14 @@ class ProductController extends Controller
         return view('includes.product-show', compact('product'));
     }
 
+    public function edit(Product $product){
+        $query = Product::orderBy('created_at', 'DESC');
+        $products = $query->get();
+        $categories = Category::all();
+
+        return view('admin.product-edit', compact('categories', 'products'));
+    }
+
 
     public function destroy($id){
 

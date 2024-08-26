@@ -75,35 +75,35 @@
 
           @foreach ($products as $product)
           <tr>
-              <td>{{$product->description}}</td>
-              <td>{{$product->name}}</td>
+              <td>{{$product->id}}</td>
+              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->name}}</textarea></td>
               <td>{{$product->category_id}}</td>
-              <td>{{$product->description}}</td>
-              <td>{{$product->price}}</td>
+              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->description}}</textarea></td>
+              <td><textarea name="description" id="description" cols="10" rows="5" class="form-control">{{$product->price}}</textarea></td>
               <td>{{$product->created_at}}</td>
               <td>{{$product->updated_at}}</td>
 
               <!-- Formulár na odstránenie -->
               <td>
                 <div class="d-flex">
-                  <form action="{{ route('products.destroy', $product->id) }}" method="post">
-                      @csrf
-                      @method('delete')
+                  <form action="" method="post">
+
                       <button type="submit" class="btn btn-warning mx-2">
-                          <i class="fa-solid fa-trash"></i>
+                          spat
                       </button>
                   </form>
 
                   <!-- Formulár na úpravu -->
-                  <form action="{{ route('products.edit', $product->id) }}" method="GET">
+                  <form action="" method="GET">
                       <button type="submit" class="btn btn-warning">
-                          <i class="fa-solid fa-pen-to-square"></i>
+                          ulozit
                       </button>
                   </form>
-                </div>
               </td>
+            </div>
           </tr>
       @endforeach
+
         </table>
 
     </div>
