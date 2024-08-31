@@ -55,6 +55,6 @@ class UserController extends Controller
             'city' => $validated['city'],
         ]);
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.index')->with('success', 'Uživateľské dáta boli úspešne aktualizované');
     }
 }

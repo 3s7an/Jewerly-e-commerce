@@ -41,7 +41,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Product added to cart!');
+        return redirect()->back()->with('success', 'Produkt bol pridaný do košíku!');
     }
 
     public function index()
@@ -77,6 +77,6 @@ class CartController extends Controller
             $cartItem->save();
         }
 
-        return redirect()->back()->with('success', 'Item removed from cart!');
+        return redirect()->back()->with('success', 'Produkt bol úspešne odobratý z košíku!');
     }
 }

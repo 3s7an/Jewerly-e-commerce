@@ -52,7 +52,7 @@ class ProductController extends Controller
     ]);
 
     // Presmerovanie po úspešnom uložení produktu
-    return redirect()->route('admin.product');
+    return redirect()->route('admin.product')->with('success', 'Produkt bol úspešne pridaný');
 }
 
 
@@ -108,7 +108,7 @@ class ProductController extends Controller
         $product->delete();
 
         // Presmerovanie
-        return redirect()->route('admin.product');
+        return redirect()->route('admin.product')->with('success', 'Produkt bol úspešne zmazaný');
     }
 }
 

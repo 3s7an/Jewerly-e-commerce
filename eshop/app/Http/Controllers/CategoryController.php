@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $category->saveAsRoot();
     }
 
-    return redirect()->back()->with('success', 'Category created successfully!');
+    return redirect()->back()->with('success', 'Kategória bola úspešne pridaná!');
 }
 
     public function destroy($id){
@@ -49,6 +49,6 @@ class CategoryController extends Controller
         $category = Category::where('id', $id)->first();
         $category->delete();
 
-        return redirect()->route('admin.category');
+        return redirect()->route('admin.category')->with('succes', 'Kategória bola úspešne odstránená');
     }
 }

@@ -42,7 +42,7 @@ class AuthController extends Controller
             ]
         );
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Registrácia prebehla úspešne');
 
 
     }
@@ -74,7 +74,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         // Presmerovanie na dashboard po úspešnej autentifikácii
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('succes', 'Prihlásenie bolo úspešné');
     }
 
     // Pri neúspešnej autentifikácii sa používateľ presmeruje späť na login s chybovou správou
