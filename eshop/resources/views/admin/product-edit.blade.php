@@ -1,66 +1,61 @@
 @extends('admin.layout')
 
 @section('content')
-<form action="{{ route('products.store') }}" method="post"  enctype="multipart/form-data">
-    @csrf
-
-
-    <!-- Formulár na pridávanie produktu -->
     <div class="container mt-4">
-        <h4 class="text-center mb-4">Pridať produkt :</h4>
+        <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light w-75 mx-auto">
+            @csrf
+            <h4 class="text-center mb-4">Pridať produkt</h4>
 
-        <div class="mb-3">
-            <label for="image" class="form-label">Fotka produktu</label>
-            <input class="form-control" type="file" id="product-image" name="product-image">
-            @error('product-image')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="product-image" class="form-label">Fotka produktu</label>
+                <input class="form-control" type="file" id="product-image" name="product-image">
+                @error('product-image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="mb-3">
-            <label for="product-name" class="form-label">Názov :</label>
-            <input type="text" class="form-control" name="product-name" id="product-name">
-            @error('product-name')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="product-name" class="form-label">Názov</label>
+                <input type="text" class="form-control" name="product-name" id="product-name">
+                @error('product-name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="mb-3">
-            <label for="product-category" class="form-label">Kategória :</label>
-            <select class="form-select" name="product-category" id="product-category">
-                <option value="0" selected>Žiadna</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div>
+            <div class="mb-3">
+                <label for="product-category" class="form-label">Kategória</label>
+                <select class="form-select" name="product-category" id="product-category">
+                    <option value="0" selected>Žiadna</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-        <div class="mb-3">
-            <label for="product-description" class="form-label">Popis :</label>
-            <textarea class="form-control" name="product-description" id="product-description" cols="30" rows="3"></textarea>
-            @error('product-description')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="product-description" class="form-label">Popis</label>
+                <textarea class="form-control" name="product-description" id="product-description" cols="30" rows="3"></textarea>
+                @error('product-description')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="mb-3">
-            <label for="product-price" class="form-label">Cena :</label>
-            <input type="text" class="form-control" name="product-price" id="product-price">
-            @error('product-price')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="product-price" class="form-label">Cena</label>
+                <input type="text" class="form-control" name="product-price" id="product-price">
+                @error('product-price')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-warning btn-sm" style="width:10%">Pridať</button>
-        </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-warning">Pridať</button>
+            </div>
 
-        <hr class="mt-4">
+            <hr class="mt-4">
+        </form>
     </div>
-    <!-- KONIEC FORMULARU -->
 
-
-</form>
             <!-- TABULKA -->
 
             <!-- Hlavicka tabulky -->

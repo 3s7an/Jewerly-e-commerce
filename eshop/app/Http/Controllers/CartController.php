@@ -46,16 +46,36 @@ class CartController extends Controller
 
     public function index()
     {
+        // Najdenie spravneho košíku pre daneho uživatela, tj. uživatela ktory je prihlaseny
         $cart = Cart::where('user_id', Auth::id())->first();
         $cartItems = $cart ? $cart->cartItems()->with('product')->get() : collect([]);
 
-        return view('cart.index', compact('cartItems'));
+        // Celkový počet produktov, ktorý sa zobrazuje v košíku
+        $totalItems = 0;
+        $totalPrice = 0;
+
+        // cyklus na zrátanie všetkych produktov
+          foreach($cartItems as $item){
+            $totalItems += $item->quantity;
+            $totalPrice += $item->quantity * $item->product->price;
+          };
+
+        return view('cart.index', compact('cartItems', 'totalItems', 'totalPrice'));
     }
 
     public function removeFromCart($cartItemId)
     {
+        //Najst polozku podla Idčka a vymaž všetky ktoré sa našli
+        // Dobudúcna prerobit aby sa itemy odstranovali po jednom, nie ako celok !!!!
         $cartItem = CartItem::findOrFail($cartItemId);
+
+        if($cartItem->quantity == 1){
         $cartItem->delete();
+        }
+        else{
+            $cartItem->quantity -= 1;
+            $cartItem->save();
+        }
 
         return redirect()->back()->with('success', 'Item removed from cart!');
     }

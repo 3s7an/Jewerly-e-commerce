@@ -23,19 +23,22 @@
                         <form action="{{route('cart.remove', $item->id)}}" method="POST">
                             @csrf
                             @method('delete')
-                        <button class="btn btn-danger btn-sm">Odstrániť</button>
+                        <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <hr>
 
-    <div class="d-flex flex-row-reverse">
-        <form action="">
-            <button class="btn btn-warning mt-5">Pokračovať</button>
-                </form>
 
-</div>
 
+
+    <div class="d-flex justify-content-end">
+        <form action="" class="d-flex flex-column align-items-end">
+            <h4 class="mt-3">Celková cena: {{$totalPrice}}</h4>
+            <button class="btn btn-warning mt-4">Pokračovať</button>
+        </form>
+    </div>
 @endsection

@@ -1,34 +1,35 @@
 @extends('admin.layout')
 
 @section('content')
-    <form action="{{ route('category.store') }}" method="post">
-        @csrf
-        <div class="d-flex flex-column align-items-center">
-            <h4>Pridať kategóriu :</h4>
-            <label for="category-name">Názov kategórie:</label>
-            <input type="text" name="category-name" id="category-name"></input>
-            @error('category-name')
-                <span style="color: red">{{ $message }}</span>
-            @enderror
+<form action="{{ route('category.store') }}" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto mb-5">
+    @csrf
+    <h4 class="text-center mb-4">Pridať kategóriu</h4>
 
-            <label for="parent-id">Rodičovská kategória:</label>
-            <select type="text" name="parent-id" id="parent-id">
-                <option value="0">Žiadna</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name}}</option>
-                @endforeach
-            </select>
-            @error('parent-id')
-                <span style="color: red">{{ $message }}</span>
-            @enderror
+    <div class="mb-3">
+        <label for="category-name" class="form-label">Názov kategórie:</label>
+        <input type="text" name="category-name" id="category-name" class="form-control" placeholder="Zadajte názov kategórie">
+        @error('category-name')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
 
+    <div class="mb-3">
+        <label for="parent-id" class="form-label">Rodičovská kategória:</label>
+        <select name="parent-id" id="parent-id" class="form-select">
+            <option value="0">Žiadna</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        @error('parent-id')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
 
-
-            <br>
-
-            <button type="submit" class="btn btn-primary btn-sm">Pridať</button>
+    <button type="submit" class="btn btn-primary w-100">Pridať</button>
+</form>
             <hr>
-            <table class="table table-hover">
+            <table class="table table-hover mt-5">
 
             </form>
 
@@ -51,11 +52,24 @@
                         <td>{{ $category->created_at }}</td>
                         <td>{{ $category->updated_at }}</td>
 
-                            <form action="{{route('categories.destroy', $category->id)}}" method="post">
-                                @csrf
-                                @method('delete')
-                                <td><button type="submit" class="btn btn-sm btn-danger">X</button></td>
-                            </form>
+                        <td>
+                            <div class="d-flex">
+                              <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                  @csrf
+                                  @method('delete')
+                                  <button type="submit" class="btn btn-warning mx-2">
+                                      <i class="fa-solid fa-trash"></i>
+                                  </button>
+                              </form>
+
+                              <!-- Formulár na úpravu -->
+                              <form action="" method="GET">
+                                  <button type="submit" class="btn btn-warning">
+                                      <i class="fa-solid fa-pen-to-square"></i>
+                                  </button>
+                              </form>
+                            </div>
+                          </td>
 
                     </tr>
 
