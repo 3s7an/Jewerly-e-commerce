@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+@include('includes.flash-message')
 <h1 class="text-center mb-5">Tvoj košík</h1>
     <table class="table">
         <thead>

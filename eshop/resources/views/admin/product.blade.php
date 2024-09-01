@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
+@include('includes.flash-message')
 <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light w-75 mx-auto mt-4">
     @csrf
 

@@ -39,8 +39,11 @@
 
 
     @include('includes.navbar-search')
+    
     <div class="d-flex">
+
     @include('admin.sidebar')
+
 
 
     <div class="container py-4 ">

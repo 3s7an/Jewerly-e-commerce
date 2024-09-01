@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
+@include('includes.flash-message')
 <form action="{{ route('category.store') }}" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto mb-5">
     @csrf
     <h4 class="text-center mb-4">Pridať kategóriu</h4>
