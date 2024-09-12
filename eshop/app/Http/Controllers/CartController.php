@@ -66,7 +66,6 @@ class CartController extends Controller
     public function removeFromCart($cartItemId)
     {
         //Najst polozku podla Idčka a vymaž všetky ktoré sa našli
-        // Dobudúcna prerobit aby sa itemy odstranovali po jednom, nie ako celok !!!!
         $cartItem = CartItem::findOrFail($cartItemId);
 
         if($cartItem->quantity == 1){

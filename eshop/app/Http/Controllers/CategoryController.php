@@ -18,6 +18,12 @@ class CategoryController extends Controller
 
     }
 
+    public function interIndex(){
+        $categories = Category::orderBy('parent_id', 'ASC')->paginate(5);
+
+        return view('admin.add-category', compact('categories'));
+    }
+
     public function store(Request $request)
 {
     $request->validate([

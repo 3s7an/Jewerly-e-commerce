@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -29,6 +30,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('/products', [ProductController::class, 'index'])->name('admin.product');
 
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
+
+    Route::get('/category/add', [CategoryController::class, 'interIndex'])->name('admin.intercategory');
+
+
 
     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
@@ -64,6 +69,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Order routy
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 
 
 

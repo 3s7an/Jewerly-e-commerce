@@ -37,7 +37,7 @@
 
 
     <div class="d-flex justify-content-end">
-        <form action="" class="d-flex flex-column align-items-end">
+        <form action="{{route('order.index')}}" class="d-flex flex-column align-items-end">
             <h4 class="mt-3">Celková cena: {{$totalPrice}}</h4>
             <button class="btn btn-warning mt-4">Pokračovať</button>
         </form>
