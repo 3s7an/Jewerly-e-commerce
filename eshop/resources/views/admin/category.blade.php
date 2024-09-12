@@ -3,6 +3,11 @@
 @section('content')
     @include('includes.flash-message')
 
+    <form action="{{route('admin.intercategory')}}" method="get">
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning mb-5">Pridat kategóriu</button>
+        </div>
+        </form>
 
     <table class="table table-hover mt-5">
 
@@ -56,11 +61,7 @@
 
     {{ $categories->links() }}
 
-    <form action="{{route('admin.intercategory')}}" method="get">
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-warning">Pridat kategóriu</button>
-        </div>
-        </form>
 
-    </form>
+
+
 @endsection

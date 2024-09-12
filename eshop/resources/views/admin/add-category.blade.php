@@ -2,6 +2,12 @@
 
 @section('content')
 @include('includes.flash-message')
+
+<form action="{{route('admin.category')}}" method="get">
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-warning mb-5">Skryť</button>
+    </div>
+    </form>
 <form action="{{ route('category.store') }}" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto mb-5">
     @csrf
     <h4 class="text-center mb-4">Pridať kategóriu</h4>
@@ -30,7 +36,7 @@
     <button type="submit" class="btn btn-primary w-100">Pridať</button>
 </form>
 
-    <a href="{{route('admin.category')}}" class="text-center">Skryť</a>
+    
             <hr>
             <table class="table table-hover mt-5">
 
