@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
+
+    // DASHBOARD CAST
     public function index(){
 
         $cart = Cart::where('user_id', Auth::id())->first();
@@ -69,5 +71,14 @@ class OrderController extends Controller
     $order->update(['total_price' => $totalPrice]);
 
     return redirect()->route('dashboard')->with('success', 'Objednávka bola úspešne vytvorená.');
+    }
+
+    // KONIEC DASHBOARD CASTI
+
+    // ZACIATOK ADMIN CASTI
+
+    public function adminIndex(){
+        $orders  = Order::all();
+        return view('admin.order', compact('orders'));
     }
 }

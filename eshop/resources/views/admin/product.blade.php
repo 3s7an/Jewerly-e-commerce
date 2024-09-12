@@ -32,7 +32,7 @@
 <!-- Telo tabulky -->
           @foreach ($products as $product)
           <tr>
-              <td>{{$product->description}}</td>
+              <td>{{$product->id}}</td>
               <td>{{$product->name}}</td>
               <td>{{$product->category_id}}</td>
               <td>{{$product->description}}</td>

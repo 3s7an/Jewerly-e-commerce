@@ -6,7 +6,7 @@
             <a href="#dashboard" class="nav-link ">Hlavná stranka</a>
         </li>
         <li class="nav-item">
-            <a href="/admin" class="nav-link ">Objednávky</a>
+            <a href=" {{route('admin.orders')}} " class="nav-link ">Objednávky</a>
         </li>
         <li class="nav-item">
             <a href=" {{route('admin.users')}} " class="nav-link ">Uživatelia</a>

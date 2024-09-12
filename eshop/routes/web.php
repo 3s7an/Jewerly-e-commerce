@@ -35,13 +35,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/category/add', [CategoryController::class, 'interIndex'])->name('admin.intercategory');
 
-
-
-    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
     Route::delete('/category{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+
+    Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
+
+
+
+
 
 
 });
