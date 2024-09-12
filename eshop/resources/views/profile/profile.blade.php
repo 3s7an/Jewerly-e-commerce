@@ -1,7 +1,7 @@
 @extends('profile.layout')
 
 @section('content')
-@include('includes.flash-message')uu
+@include('includes.flash-message')
 
 
 

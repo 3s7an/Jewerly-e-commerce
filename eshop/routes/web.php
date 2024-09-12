@@ -73,6 +73,8 @@ Route::middleware('auth')->group(function () {
 // Order routy
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+
 
 
 // Nezaradena routa

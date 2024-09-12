@@ -11,11 +11,18 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+        'order_id',
         'order_number',
         'total_price',
         'status'
 
     ];
+
+    // Vzťah s OrderItem
+        public function items()
+        {
+            return $this->hasMany(OrderItem::class);
+        }
 
     public function user()
     {
