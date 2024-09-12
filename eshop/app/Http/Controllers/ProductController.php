@@ -24,6 +24,13 @@ class ProductController extends Controller
     }
 
 
+    public function interIndex(){
+
+        $products = Product::all();
+        $categories = Category::all();
+        return view('admin.add-product', compact('products', 'categories'));
+    }
+
 
     public function store(Request $request)
 {

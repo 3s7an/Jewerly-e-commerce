@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/products', [ProductController::class, 'index'])->name('admin.product');
 
+    Route::get('/products/add', [ProductController::class, 'interIndex'])->name('admin.add-product');
+
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
 
     Route::get('/category/add', [CategoryController::class, 'interIndex'])->name('admin.intercategory');
