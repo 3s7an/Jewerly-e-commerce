@@ -14,6 +14,8 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+
     <title>Eshop</title>
 
     <style>
@@ -39,7 +41,7 @@
 
 
     @include('includes.navbar-search')
-    
+
     <div class="d-flex">
 
     @include('admin.sidebar')

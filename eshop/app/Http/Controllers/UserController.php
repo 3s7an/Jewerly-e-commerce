@@ -10,26 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        $query = Product::orderBy('created_at', 'DESC');
-        $products = $query->get();
 
-        $categories = Category::all();
-        return view('admin.user', ['users' => $users, 'products' => $products, 'categories' => $categories]);
-    }
-
-    public function update(User $user){
-        $validated = request()->validate([
-            'name' => 'required|min:2|max:50',
-            'surname' => 'required|min:2|max:50',
-            'street' => 'required|min:2|max:50',
-            'zipcode' => 'required|max:10',
-            'city' => 'required|max:10'
-
-        ]);
-    }
+    /* Profile časť */
 
     public function editData(User $user){
 
@@ -57,4 +39,39 @@ class UserController extends Controller
 
         return redirect()->route('profile.index')->with('success', 'Uživateľské dáta boli úspešne aktualizované');
     }
+
+    // Koniec profile časti //
+
+    // Začiatok admin časti
+
+    public function index()
+    {
+        $users = User::all();
+        $query = Product::orderBy('created_at', 'DESC');
+        $products = $query->get();
+
+        $categories = Category::all();
+        return view('admin.user', ['users' => $users, 'products' => $products, 'categories' => $categories]);
+    }
+
+    public function show(User $user){
+
+        return view('admin.user-show', compact(['user']));
+
+
+
+
+    }
+
+    public function update(Request $request, User $user){
+        $user->update([
+            'is_admin' => $request->input('is_admin'),
+        ]);
+
+        return redirect()->route('admin.users');
+    }
+
+
+
 }
+

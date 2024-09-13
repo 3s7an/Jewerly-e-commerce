@@ -41,6 +41,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 
+    Route::get('/users{user}', [UserController::class, 'show'])->name('admin.user.show');
+
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('admin.user.update');
+
     Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
 
     Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.order.show');
