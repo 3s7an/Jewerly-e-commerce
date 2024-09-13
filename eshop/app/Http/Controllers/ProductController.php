@@ -32,6 +32,8 @@ class ProductController extends Controller
     }
 
 
+
+
     public function store(Request $request)
 {
     // Validácia vstupov
@@ -68,6 +70,8 @@ class ProductController extends Controller
     public function show(Product $product){
         return view('includes.product-show', compact('product'));
     }
+
+
 
 
 

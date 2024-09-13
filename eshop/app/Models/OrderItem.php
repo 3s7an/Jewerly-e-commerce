@@ -21,7 +21,7 @@ class OrderItem extends Model
          return $this->belongsTo(Order::class);
      }
 
-     // Vzťah s Product (predpokladá sa, že model Product existuje)
+     // Vzťah s Product 
      public function product()
      {
          return $this->belongsTo(Product::class);

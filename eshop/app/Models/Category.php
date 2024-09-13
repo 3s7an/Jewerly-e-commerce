@@ -11,7 +11,7 @@ use Kalnoy\Nestedset\NodeTrait;
 class Category extends Model
 {
     use HasFactory;
-   
+
 
     use NodeTrait;
 
@@ -20,6 +20,10 @@ class Category extends Model
         'name',
         'parent_id'
     ];
+
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
 
     public function sluggable(): array
     {

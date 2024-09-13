@@ -30,6 +30,8 @@ class Order extends Model
     }
 
 
+  
+
     protected static function boot()
     {
         parent::boot();
@@ -49,6 +51,8 @@ class Order extends Model
 
             return $orderNumber;
         }
+
+
     }
 
 

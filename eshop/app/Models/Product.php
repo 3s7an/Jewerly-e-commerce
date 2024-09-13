@@ -20,6 +20,9 @@ class Product extends Model
     ];
 
 
+    public function item(){
+        
+    }
 
 
     public function sluggable(): array

@@ -8,7 +8,6 @@
     <tr>
         <td>Čislo objednavky</td>
         <td>Email uživateľa</td>
-        <td>Produkty</td>
         <td>Cena objednávky</td>
         <td>Status objednávky</td>
 
@@ -20,7 +19,7 @@
             <td>{{$order->user->email}}</td>
             <td>{{$order->total_price}} EUR</td>
             <td>{{$order->status}}</td>
-            <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+            <td><a href="{{route('admin.order.show', $order->id)}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
         </tr>
     @endforeach
 

@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
 
+    Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.order.show');
+
+    Route::put('/orders/{order}', [OrderController::class, 'update'])->name('admin.order.update');
+
 
 
 
@@ -75,9 +79,11 @@ Route::middleware('auth')->group(function () {
 });
 
 // Order routy
-Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 
-Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
+
+
 
 
 

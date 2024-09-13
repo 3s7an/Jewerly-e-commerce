@@ -50,7 +50,7 @@ class OrderController extends Controller
         'order_number' => Str::uuid(),
         'user_id' => Auth::id(),
         'total_price' => 0, // Toto vypočítame nižšie
-        'status' => 'pending',
+        'status' => 'spracováva sa',
     ]);
 
     // Pridanie položiek do objednávky a výpočet celkovej ceny
@@ -81,4 +81,22 @@ class OrderController extends Controller
         $orders  = Order::all();
         return view('admin.order', compact('orders'));
     }
+
+    public function show(Order $order){
+
+
+       return view('admin.order-show', compact('order'));
+
+    }
+
+    public function update(Request $request, Order $order) {
+
+        $order->update([
+            'status' => $request->input('status'),
+        ]);
+
+        return redirect()->route('admin.orders');
+    }
+
 }
+
