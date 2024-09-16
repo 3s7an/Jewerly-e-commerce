@@ -2,44 +2,48 @@
 
 @section('content')
 @include('includes.flash-message')
-<h1 class="text-center mb-5">Tvoj košík</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Názov produktu</th>
-                <th>Množstvo</th>
-                <th>Cena</th>
+<h1 class="text-center text-3xl font-bold mb-5">Tvoj košík</h1>
 
-                <th></th>
+<div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 divide-y divide-gray-200">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Názov produktu</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Množstvo</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cena</th>
+                <th class="px-6 py-3"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white divide-y divide-gray-200">
             @foreach($cartItems as $item)
                 <tr>
-                    <td>{{ $item->product->name }}</td>
-                    <td>{{ $item->quantity }}</td>
-                    <td>${{ $item->product->price }}</td>
-
-                    <td>
-                        <form action="{{route('cart.remove', $item->id)}}" method="POST">
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $item->product->name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <input type="number" value="{{ $item->quantity }}" min="1" max="100" class="w-16 border border-gray-300 rounded-md px-2 py-1">
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">${{ $item->product->price }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                        <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                            <button class="text-red-600 hover:text-red-800 transition duration-150">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <hr>
+</div>
 
+<hr class="my-6 border-gray-300">
 
+<div class="flex justify-end">
+    <form action="{{route('order.index')}}" class="flex flex-col items-end">
+        <h4 class="text-lg font-semibold mt-3">Celková cena: {{$totalPrice}}</h4>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mt-4">Pokračovať</button>
+    </form>
+</div>
 
-
-    <div class="d-flex justify-content-end">
-        <form action="{{route('order.index')}}" class="d-flex flex-column align-items-end">
-            <h4 class="mt-3">Celková cena: {{$totalPrice}}</h4>
-            <button class="btn btn-warning mt-4">Pokračovať</button>
-        </form>
-    </div>
 @endsection

@@ -3,10 +3,10 @@
 @section('content')
 @include('includes.flash-message')
 
-<div class="container mt-4">
+<div class="container py-4">
     <form action="{{route('admin.add-product')}}" method="get">
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-warning mb-5">Pridať produkt</button>
+            <button type="submit" class="btn btn-warning my-0">Pridať produkt</button>
         </div>
 </div>
 

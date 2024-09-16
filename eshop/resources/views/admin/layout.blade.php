@@ -14,26 +14,13 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Eshop</title>
 
     <style>
 
-        .sidebar {
-            height: 100vh;
 
-            background-color: #3e454a;
-            color: #ffffff;
-        }
-        .sidebar a {
-            color: #ffffff;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            width: 100%;
-        }
     </style>
 </head>
 

@@ -1,62 +1,75 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container d-flex justify-content-between">
+<nav class="bg-gray-900 text-white">
+    <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Eshop Brand with Custom Font -->
-        <a class="navbar-brand fs-3" href="{{ route('dashboard') }}">
-            <span class="text-warning">Zlatníctvo</span>
+        <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
+            <span class="text-yellow-400">Zlatníctvo</span>
         </a>
 
-    <div class="collapse navbar-collapse" id="navbarContent">
-            <form class="d-flex ms-auto me-auto my-2 my-lg-0" action="{{ route('dashboard') }}" method="get">
+        <!-- Search Form -->
+        <div class="hidden md:block">
+            <form class="flex" action="{{ route('dashboard') }}" method="get">
                 @csrf
-
-                <input class="form-control me-2 search-bar" type="search" placeholder="Search" name="search" id="search">
-                <button class="btn btn-warning btn-sm" type="submit">Vyhladať</button>
+                <input class="form-input w-full rounded-l-md border-2 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
             </form>
         </div>
 
-
-
-        <div class="d-flex">
+        <!-- Auth Links -->
+        <div class="flex items-center space-x-4">
             @auth
-
-            <div class="d-flex">
-                <ul>
-                    <li class="nav-item dropdown list-unstyled ">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-user fa-2xl"></i></a>
-                        <div class="dropdown-menu">
-
-                            <a class="dropdown-item" href="{{ route('profile.index') }}">Profil</a>
-                            <a class="dropdown-item" href="#">Moje objednávky</a>
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin panel</a>
-                            <div class="dropdown-divider"></div>
-
-
-                            <form action="{{ route('logout')}} " method="post">
-                                @csrf
-
-
-                            <button class="btn btn-danger btn-small" type="submit">Odhlásiť sa</button>
-                        </ul>
-                        </form>
-                        </div>
-                        <div>
-                            <a href="{{ route('cart.index') }}"><i class="fa-solid fa-cart-shopping fa-2xl"></i></a>
-                        </div>
-
-
-
-
+            <div class="relative">
+                <!-- User Dropdown -->
+                <button id="user-dropdown-toggle" class="flex items-center focus:outline-none">
+                    <i class="fa-solid fa-user text-2xl"></i>
+                </button>
+                <div id="user-dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 hidden">
+                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('profile.index') }}">Profil</a>
+                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="#">Moje objednávky</a>
+                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('admin.dashboard') }}">Admin panel</a>
+                    <div class="border-t my-2"></div>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100" type="submit">Odhlásiť sa</button>
+                    </form>
+                </div>
+            </div>
+            <a href="{{ route('cart.index') }}" class="ml-4">
+                <i class="fa-solid fa-cart-shopping text-2xl"></i>
+            </a>
             @endauth
 
             @guest
-
-
-                <a class="mx-4 text-warning" href="{{ route('login') }}">Prihláste sa</a>
+            <a class="text-yellow-400 hover:text-yellow-500" href="{{ route('login') }}">Prihláste sa</a>
             @endguest
-
         </div>
-        </div>
+    </div>
 
+    <!-- Mobile Search Form -->
+    <div class="block md:hidden mt-4">
+        <form class="flex" action="{{ route('dashboard') }}" method="get">
+            @csrf
+            <input class="form-input w-full rounded-l-md border-2 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
+            <button class="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
+        </form>
     </div>
 </nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Toggle User Dropdown menu
+    $('#user-dropdown-toggle').click(function() {
+        $('#user-dropdown-menu').toggle(); // Toggle visibility of the dropdown
+    });
+
+    // Close the dropdown if clicked outside of it
+    $(document).click(function(e) {
+        if (!$(e.target).closest('#user-dropdown-toggle, #user-dropdown-menu').length) {
+            $('#user-dropdown-menu').hide();
+        }
+    });
+});
+</script>
+
+

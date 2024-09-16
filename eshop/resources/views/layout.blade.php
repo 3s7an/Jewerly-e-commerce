@@ -14,22 +14,10 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Eshop</title>
-    <style>
 
-        .sidebar {
-            height: 100vh;
-            background: #f0ad4e;
-            }
-
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -46,6 +34,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Toggle visibility of auth links when hamburger icon is clicked
+    $('#hamburger-icon').click(function() {
+        $('#auth-links').toggle();
+    });
+});
+</script>
 </body>
 </html>
 
