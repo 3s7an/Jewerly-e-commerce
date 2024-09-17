@@ -34,7 +34,16 @@
                 </div>
             </div>
             <a href="{{ route('cart.index') }}" class="ml-4">
-                <i class="fa-solid fa-cart-shopping text-2xl"></i>
+
+                <div class="relative inline-block">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                    @if($totalItems > 0)
+                        <span class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full">
+                            {{$totalItems}}
+                        </span>
+                    @endif
+                </div>
+
             </a>
             @endauth
 
@@ -60,7 +69,7 @@
 $(document).ready(function() {
     // Toggle User Dropdown menu
     $('#user-dropdown-toggle').click(function() {
-        $('#user-dropdown-menu').toggle(); // Toggle visibility of the dropdown
+        $('#user-dropdown-menu').slideToggle("fast"); // Toggle visibility of the dropdown
     });
 
     // Close the dropdown if clicked outside of it

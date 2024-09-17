@@ -20,12 +20,13 @@
 
 </head>
 
+
 <body>
 
     @include('includes.navbar-search')
 
     <div class="d-flex">
-        <div class="container py-4">
+        <div class="container">
             @yield('content')
         </div> <!-- Uzatváranie divu .container -->
     </div> <!-- Uzatváranie divu .d-flex -->

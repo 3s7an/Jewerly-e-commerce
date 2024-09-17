@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as FacadeRequest;
 
 class DashboardController extends Controller
@@ -22,6 +24,9 @@ class DashboardController extends Controller
 
     $categories = Category::get()->toTree();
 
+    $cart = Cart::where('user_id', Auth::id())->first();
+    $totalItems = $cart ? $cart->totalItems() : 0;
+
 
 
 
@@ -29,6 +34,7 @@ class DashboardController extends Controller
    return view('dashboard')->with([
     'categories' => $categories,
     'products' => $products,
+    'totalItems' => $totalItems
 ]);
 }
 }

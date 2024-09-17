@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
+
     public function add(Request $request)
     {
         // Validácia vstupu
@@ -41,7 +43,7 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Produkt bol pridaný do košíku!');
+        return redirect()->back()/*->with('success', 'Produkt bol pridaný do košíku!')*/;
     }
 
     public function index()

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Darryldecode\Cart\CartServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
