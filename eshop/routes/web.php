@@ -80,6 +80,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+    Route::post('/cart/change', [CartController::class, 'update'])->name('cart.update');
 });
 
 // Order routy

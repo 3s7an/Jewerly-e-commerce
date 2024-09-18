@@ -2,10 +2,10 @@
 
 @section('content')
 @include('includes.flash-message')
+<div class="form_toggle">
 
-<form action="{{route('admin.category')}}" method="get">
     <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-warning mb-5">Skryť</button>
+        <button type="submit" class="btn btn-warning mb-5 toggler">Skryť</button>
     </div>
     </form>
 <form action="{{ route('category.store') }}" method="post" class="p-4 border rounded shadow-sm bg-light w-50 mx-auto mb-5">
@@ -32,15 +32,16 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    </div>
 
     <button type="submit" class="btn btn-primary w-100">Pridať</button>
 </form>
 
-    
+
             <hr>
             <table class="table table-hover mt-5">
 
-            </form>
+            
 
                 <tr>
                     <th scope="col">Id kategorie</th>
@@ -90,17 +91,14 @@
 ;
             {{ $categories->links() }}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$('.toggler').click(function (e) {
+    e.preventDefault();
+    $('.form_toggle').toggle();
 
 
-
-
-
-
-
-
-
-
-
-
+ });
 
 @endsection

@@ -67,7 +67,7 @@ class CartController extends Controller
 
     public function removeFromCart($cartItemId)
     {
-        //Najst polozku podla Idčka a vymaž všetky ktoré sa našli
+
         $cartItem = CartItem::findOrFail($cartItemId);
 
         if($cartItem->quantity == 1){
@@ -79,5 +79,24 @@ class CartController extends Controller
         }
 
         return redirect()->back()->with('success', 'Produkt bol úspešne odobratý z košíku!');
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'itemId' => 'required|integer|exists:cart_items,id',
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+        $cartItem = CartItem::find($request->input('itemId'));
+
+        if (!$cartItem) {
+            return response()->json(['error' => 'Item not found'], 404);
+        }
+
+        $cartItem->quantity = $request->input('quantity');
+        $cartItem->save();
+
+        return response()->json(['success' => true, 'quantity' => $cartItem->quantity]);
     }
 }

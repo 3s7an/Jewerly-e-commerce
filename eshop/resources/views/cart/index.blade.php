@@ -19,7 +19,9 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $item->product->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <input type="number" value="{{ $item->quantity }}" min="1" max="100" class="w-16 border border-gray-300 rounded-md px-2 py-1">
+                        <button type="button" class="plus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}">plus</button>
+                        <input type="text" value="{{ $item->quantity }}" class="w-16 border border-gray-300 rounded-md px-2 py-1 item_quantity" min="1" readonly>
+                        <button type="button" class="minus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}">minus</button>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">${{ $item->product->price }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -46,4 +48,61 @@
     </form>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+function updateQuantity(itemId, newValue) {
+    // AJAX request to update the model in the database
+    $.ajax({
+    url: '/cart/change',  // URL of the route that handles the update
+    type: 'POST',
+    data: {
+        _token: '{{ csrf_token() }}',  // Include CSRF token
+        itemId: itemId,
+        quantity: newValue  // Use the updated newValue
+    },
+    success: function(response) {
+        console.log('Quantity updated successfully:', response);
+        location.reload(); // Refresh the page to reflect the updated total price and quantity
+    },
+    error: function(xhr, status, error) {
+        console.error('Error updating quantity:', error);
+    }
+});
+}
+
+
+$('.plus').click(function() {
+    var $input = $(this).siblings('.item_quantity');
+    var currentValue = parseInt($input.val(), 10);
+    var itemId = $(this).data('item-id');
+
+    var newValue = currentValue + 1; // Increase the quantity by 1
+    $input.val(newValue);  // Update input field value
+
+    updateQuantity(itemId, newValue); // Call function to update the quantity
+});
+
+$('.minus').click(function() {
+    var $input = $(this).siblings('.item_quantity');
+    var currentValue = parseInt($input.val(), 10);
+    var minValue = parseInt($input.attr('min'), 10) || 1; // Ensure there's a minimum value of 1
+    var itemId = $(this).data('item-id');
+
+    if (currentValue > minValue) {
+        var newValue = currentValue - 1;  // Decrease the quantity by 1
+        $input.val(newValue);  // Update input field value
+
+        updateQuantity(itemId, newValue); // Call function to update the quantity
+    }
+});
+
+
+
+</script>
+
 @endsection
+
+
+
