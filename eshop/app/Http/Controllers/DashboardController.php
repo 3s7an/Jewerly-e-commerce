@@ -15,6 +15,7 @@ class DashboardController extends Controller
 {
     $query = Product::orderBy('created_at', 'DESC');
 
+    // Search bar
     if (request()->has('search')) {
         $query->where('name', 'like', '%' . request()->get('search', '') . '%');
     }
@@ -22,6 +23,7 @@ class DashboardController extends Controller
     $products = $query->get();
 
 
+    // Categories
     $categories = Category::get()->toTree();
 
     $cart = Cart::where('user_id', Auth::id())->first();

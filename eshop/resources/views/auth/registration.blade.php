@@ -2,42 +2,51 @@
 
 @section('content')
 
-<div class="row justify-content-center">
-    <div class="col-12 col-sm-8 col-md-6">
-        <form class="form mt-5" action="{{route('register')}}" method="post">
+<div class="flex justify-center mt-10">
+    <div class="w-full sm:w-3/4 md:w-1/2">
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8" action="{{route('register')}}" method="post">
             @csrf
-            <h3 class="text-center text-dark mb-4">Registrácia</h3>
+            <h3 class="text-center text-2xl text-gray-700 mb-6">Registrácia</h3>
 
-            <div class="form-group mt-3">
-                <label for="email" class="text-dark">Email:</label><br>
-                <input type="email" name="email" id="email" class="form-control">
+            <!-- Email input -->
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                <input type="email" name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Zadajte svoj email">
                 @error('email')
-                <span class="d-block fs-6 text-danger mt-2">{{$message}}</span>
-            @enderror
+                    <span class="text-sm text-red-500 mt-2 block">{{$message}}</span>
+                @enderror
             </div>
-            <div class="form-group mt-3">
-                <label for="password" class="text-dark">Heslo:</label><br>
-                <input type="password" name="password" id="password" class="form-control">
+
+            <!-- Password input -->
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Heslo:</label>
+                <input type="password" name="password" id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Zadajte svoje heslo">
                 @error('password')
-                <span class="d-block fs-6 text-danger mt-2">{{$message}}</span>
-            @enderror
+                    <span class="text-sm text-red-500 mt-2 block">{{$message}}</span>
+                @enderror
             </div>
-            <div class="form-group mt-3">
-                <label for="confirm-password" class="text-dark">Potvrdit heslo:</label><br>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+
+            <!-- Confirm Password input -->
+            <div class="mb-4">
+                <label for="password_confirmation" class="block text-gray-700 text-sm font-bold mb-2">Potvrdiť heslo:</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Potvrďte svoje heslo">
                 @error('password_confirmation')
-                <span class="d-block fs-6 text-danger mt-2">{{$message}}</span>
-            @enderror
+                    <span class="text-sm text-red-500 mt-2 block">{{$message}}</span>
+                @enderror
             </div>
-            <div class="form-group">
-                <label for="remember-me" class="text-dark"></label><br>
-                <input type="submit" name="submit" class="btn btn-dark btn-md" value="Odoslat">
+
+            <!-- Submit button -->
+            <div class="flex items-center justify-between">
+                <input type="submit" name="submit" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Odoslať">
             </div>
-            <div class="text-right mt-2">
-                <a href="{{route('login')}}" class="text-dark">Máte u nás účet? Prihláste sa tu</a>
+
+            <!-- Login link -->
+            <div class="text-center mt-6">
+                <a href="{{route('login')}}" class="text-gray-600 hover:text-gray-900">Máte u nás účet? Prihláste sa tu</a>
             </div>
         </form>
     </div>
 </div>
 
 @endsection
+

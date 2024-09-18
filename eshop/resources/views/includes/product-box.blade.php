@@ -2,7 +2,7 @@
     <img src="{{ $product->getImageURL() }}" alt="{{ $product->name }}" class="w-full p-3">
 
     <div class="p-4">
-        <a href="{{ route('products.show', $product->id)}}" class="block text-center font-bold text-lg text-gray-800 hover:text-gray-600">
+        <a href="{{ route('products.show', $product->id)}}" class="block text-center font-bold text-sm text-gray-800 hover:text-gray-600">
             {{ $product->name }}
         </a>
     </div>
@@ -15,7 +15,7 @@
         <form action="{{ route('cart.add') }}" method="POST" class="w-full mt-4">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-full w-full flex justify-center items-center" type="submit" name="cart-send">
+            <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-full w-full flex justify-center items-center" type="submit" name="cart-send">
                 <i class="fa-solid fa-cart-shopping mr-2"></i> Do košíku
             </button>
         </form>

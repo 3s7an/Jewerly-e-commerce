@@ -15,10 +15,28 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Pismo -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind custom config to add Lobster font -->
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                lobster: ['Lobster', 'cursive'],
+                raleway: ['Raleway', 'sans-serif'],
+              }
+            }
+          }
+        }
+      </script>
+
+
     <title>Eshop</title>
 </head>
 
-<body class="bg-white-100 font-sans">
+<body class="bg-white-100 font-serif">
 
     @include('includes.navbar-search')
 

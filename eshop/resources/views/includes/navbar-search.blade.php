@@ -2,15 +2,15 @@
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Eshop Brand with Custom Font -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-gray-800">Zlatníctvo</span>
+            <span class="text-gray-800 font-lobster text-xxl">Zlatníctvo</span>
         </a>
 
         <!-- Search Form -->
         <div class="hidden md:block">
             <form class="flex" action="{{ route('dashboard') }}" method="get">
                 @csrf
-                <input class="form-input w-full rounded-l-md border-2 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
-                <button class="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
+                <input class="form-input w-full rounded-l-md border-1 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
+                <button class="bg-gray-800 hover:bg-gray-900 text-white rounded-r-md px-4 py-2 border-2" type="submit">Vyhladať</button>
             </form>
         </div>
 
@@ -48,7 +48,7 @@
             @endauth
 
             @guest
-            <a class="text-yellow-400 hover:text-yellow-500" href="{{ route('login') }}">Prihláste sa</a>
+            <a class="text-gray-800 hover:text-gray-900" href="{{ route('login') }}">Prihláste sa</a>
             @endguest
         </div>
     </div>
