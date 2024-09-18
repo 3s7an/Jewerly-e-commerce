@@ -4,7 +4,7 @@
     <ul class="space-y-2 flex-grow overflow-y-auto">
         @foreach($categories as $category)
             <li>
-                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-700">x {{ $category->name }}</a>
+                <a href="#" class="block px-3 py-2 rounded hover:bg-gray-700"><i class="fa-solid fa-chevron-down ml-2"></i> {{ $category->name }}</a>
 
                 @if($category->children->isNotEmpty())
                     <ul class="ml-4 mt-2 space-y-1">

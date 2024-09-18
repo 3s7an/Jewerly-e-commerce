@@ -19,9 +19,9 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $item->product->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <button type="button" class="plus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}">plus</button>
+                        <button type="button" class="plus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}"><i class="fa-solid fa-plus"></i></button>
                         <input type="text" value="{{ $item->quantity }}" class="w-16 border border-gray-300 rounded-md px-2 py-1 item_quantity" min="1" readonly>
-                        <button type="button" class="minus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}">minus</button>
+                        <button type="button" class="minus bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded" data-item-id="{{ $item->id }}"><i class="fa-solid fa-minus"></i></button>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">${{ $item->product->price }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">

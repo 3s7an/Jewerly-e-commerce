@@ -1,8 +1,8 @@
-<nav class="bg-gray-900 text-white">
+<nav class="bg-gray-100 text-gray">
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Eshop Brand with Custom Font -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-yellow-400">Zlatníctvo</span>
+            <span class="text-gray-800">Zlatníctvo</span>
         </a>
 
         <!-- Search Form -->
