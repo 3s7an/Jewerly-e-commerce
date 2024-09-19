@@ -1,4 +1,4 @@
-<div class="w-64 bg-white-800 text-black p-3 flex flex-col h-screen border">
+<div class="bg-white-800 text-black p-3 flex flex-col rounded-xl">
     <h2 class="text-center text-xl font-semibold mb-4">Kategórie</h2>
     <hr class="mb-4 border-gray-600">
     <ul class="space-y-2 flex-grow overflow-y-auto">
@@ -19,6 +19,7 @@
         @endforeach
     </ul>
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

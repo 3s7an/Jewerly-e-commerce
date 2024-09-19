@@ -1,8 +1,8 @@
-<nav class="bg-gray-100 text-gray">
+<nav class="bg-gray-100 text-gray mb-5">
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Eshop Brand with Custom Font -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-gray-800 font-lobster text-xxl">Zlatníctvo</span>
+            <span class="text-gray-800 font-lobster text-xxl sm:max-x:mx-4">Zlatníctvo</span>
         </a>
 
         <!-- Search Form -->
@@ -54,11 +54,11 @@
     </div>
 
     <!-- Mobile Search Form -->
-    <div class="block md:hidden mt-4">
+    <div class="block md:hidden mt-4 mx-7">
         <form class="flex" action="{{ route('dashboard') }}" method="get">
             @csrf
             <input class="form-input w-full rounded-l-md border-2 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
-            <button class="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
+            <button class="bg-gray-800  text-white rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
         </form>
     </div>
 </nav>

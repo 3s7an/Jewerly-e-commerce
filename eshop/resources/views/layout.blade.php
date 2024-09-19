@@ -41,7 +41,8 @@
     @include('includes.navbar-search')
 
     <div class="flex justify-center min-h-screen">
-        <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg">
+        <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg border-2 border-t-4">
+
             @yield('content')
         </div>
     </div>
