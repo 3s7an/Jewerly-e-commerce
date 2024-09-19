@@ -102,7 +102,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 
 Route::get('/profile/{user}/edit', [UserController::class, 'editData'])->name('profile.edit');
 
-Route::put('/profile/{user}', [UserController::class, 'updateData'])->name('profile.update');
+Route::post('/profile/update-data', [ProfileController::class, 'updateUserData'])->name('profile.update');
 
 
 

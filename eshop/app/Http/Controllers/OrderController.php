@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -71,6 +72,8 @@ class OrderController extends Controller
 
     // Aktualizácia celkovej ceny objednávky
     $order->update(['total_price' => $totalPrice]);
+
+    Cart::where('user_id', Auth::id())->delete();
 
     return redirect()->route('dashboard')->with('success', 'Objednávka bola úspešne vytvorená.');
     }

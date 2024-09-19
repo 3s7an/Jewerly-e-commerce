@@ -36,7 +36,7 @@
     <title>Eshop</title>
 </head>
 
-<body class="bg-white-100 font-serif">
+<body class="bg-white-100 font-sans">
 
     @include('includes.navbar-search')
 

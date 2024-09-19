@@ -1,11 +1,11 @@
 <nav class="bg-gray-100 text-gray mb-5">
     <div class="container mx-auto flex justify-between items-center py-4">
-        <!-- Eshop Brand with Custom Font -->
+        <!-- Logo -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
             <span class="text-gray-800 font-lobster text-xxl sm:max-x:mx-4">Zlatníctvo</span>
         </a>
 
-        <!-- Search Form -->
+        <!-- Searchbar-->
         <div class="hidden md:block">
             <form class="flex" action="{{ route('dashboard') }}" method="get">
                 @csrf
@@ -14,11 +14,12 @@
             </form>
         </div>
 
-        <!-- Auth Links -->
+
         <div class="flex items-center space-x-4">
+            <!-- Auth linky  -->
             @auth
             <div class="relative">
-                <!-- User Dropdown -->
+                <!-- User toggler -->
                 <button id="user-dropdown-toggle" class="flex items-center focus:outline-none">
                     <i class="fa-solid fa-user text-2xl"></i>
                 </button>
@@ -48,6 +49,7 @@
             @endauth
 
             @guest
+            <!-- Guest sekcia -->
             <a class="text-gray-800 hover:text-gray-900" href="{{ route('login') }}">Prihláste sa</a>
             @endguest
         </div>

@@ -79,21 +79,21 @@
                     </div>
                 @endif
             </div>
-        </form>
+
     </div>
 
     <!-- Platba sekcia -->
     <div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto border border-gray-200">
         <h3 class="text-xl font-semibold mb-4">Platba</h3>
         <hr class="my-4">
-        <form>
+
             <div class="flex items-center mb-4">
                 <input type="radio" name="payment_method" value="Dobierkou" id="platba" checked class="mr-2">
                 <label for="platba" class="text-sm font-medium text-gray-700">Dobierkou</label>
             </div>
 
 
-        </form>
+        
     </div>
 
     <!-- Kosik sekcia -->
