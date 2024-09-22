@@ -21,19 +21,26 @@ class Category extends Model
         'parent_id'
     ];
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'category_product');
+    }
+
     public function product(){
         return $this->hasMany(Product::class);
     }
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'name',
-                'onUpdate' => true
-            ]
-        ];
-    }
+       // Kategória môže mať viacero podkategórií
+       public function subcategories()
+       {
+           return $this->hasMany(Category::class, 'parent_id');
+       }
+
+       // Kategória môže patriť k jednej rodičovskej kategórii
+       public function parentCategory()
+       {
+           return $this->belongsTo(Category::class, 'parent_id');
+       }
 
 
 

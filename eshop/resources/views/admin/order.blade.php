@@ -4,6 +4,7 @@
 @include('includes.flash-message')
 
 <h1 class="text-center mb-4">Objednávky</h1>
+<hr>
 <table class="table table-hover mt-5">
     <tr>
         <td>Čislo objednavky</td>

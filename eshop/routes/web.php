@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Dashboard routa
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/category/show{category}', [DashboardController::class, 'showCategory'])->name('category.view.show');
 
 // Admin routy
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {

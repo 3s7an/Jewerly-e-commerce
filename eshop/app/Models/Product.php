@@ -20,22 +20,12 @@ class Product extends Model
     ];
 
 
-    public function item(){
-        
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_product');
     }
 
-
-    public function sluggable(): array
-{
-    return [
-        'slug' => [
-            'source' => 'name',
-            'onUpdate' => true
-        ]
-    ];
-}
-
-public function getImageURL(){
+    public function getImageURL(){
     if($this->image){
         return url('storage/' . $this->image);
     }

@@ -3,6 +3,9 @@
 @section('content')
 @include('includes.flash-message')
 
+<h1 class="text-center mb-4">Kategórie</h1>
+<hr class="my-6">
+
 <!-- Hidden Form Toggle Container -->
 <div class="form_toggle hidden"> <!-- Initially hidden form -->
     <div class="flex justify-center">
@@ -45,7 +48,7 @@
     </button>
 </div>
 
-<hr class="my-6">
+
 
 <!-- Table -->
 <table class="min-w-full divide-y divide-gray-200 mt-5">

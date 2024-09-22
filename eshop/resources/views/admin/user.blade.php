@@ -1,6 +1,8 @@
 @extends('admin.layout')
 
 @section('content')
+<h1 class="text-center mb-4">Uživatelia</h1>
+<hr>
 <!-- TABULKA -->
 
 <!-- Hlava tabulky -->

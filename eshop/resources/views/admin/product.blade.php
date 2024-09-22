@@ -3,6 +3,9 @@
 @section('content')
 @include('includes.flash-message')
 
+<h1 class="text-center mb-4">Produkty</h1>
+<hr class="my-6">
+
 <!-- Hidden Form Toggle Container -->
 <div class="form_toggle hidden">
     <div class="container mt-4">
