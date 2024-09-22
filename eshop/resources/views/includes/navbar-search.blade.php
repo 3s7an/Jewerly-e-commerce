@@ -1,4 +1,4 @@
-<nav class="bg-gray-100 text-gray mb-5">
+<nav class="bg-gray-100 text-gray ">
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Logo -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">

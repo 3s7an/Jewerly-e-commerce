@@ -42,6 +42,19 @@ class Category extends Model
            return $this->belongsTo(Category::class, 'parent_id');
        }
 
+       public function parentCategories(){
+
+        $parents = collect();
+
+            $currentCategory = $this;
+            while ($currentCategory->parentCategory) { // Predpokladáme, že máš vzťah na rodičov
+                $currentCategory = $currentCategory->parentCategory;
+                $parents->push($currentCategory);
+            }
+
+            return $parents;
+        }
+
 
 
 

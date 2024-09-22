@@ -28,6 +28,7 @@ class ProductController extends Controller
 
         $products = Product::all();
         $categories = Category::all();
+        
         return view('admin.add-product', compact('products', 'categories'));
     }
 
@@ -35,42 +36,45 @@ class ProductController extends Controller
 
 
     public function store(Request $request)
-{
-    // Validácia vstupov
-    $validatedData = $request->validate([
-        'product-image' => 'required|image', // Pridaná validácia pre typ súboru
-        'product-name' => 'required|min:3|max:40',
-        'product-description' => 'required|min:5|max:250',
-        'product-price' => 'required|numeric',
-        'product-category' => 'nullable|numeric|exists:categories,id', // Umožňuje null a kontroluje existenciu v tabuľke 'categories'
-    ]);
+    {
+        // Validácia vstupov
+        $validatedData = $request->validate([
+            'product-image' => 'required|image',
+            'product-name' => 'required|min:3|max:40',
+            'product-description' => 'required|min:5|max:250',
+            'product-price' => 'required|numeric',
+            'product-category' => 'nullable|numeric|exists:categories,id',
+        ]);
 
-    // Uloženie obrázka, ak existuje
-    if($request->hasFile('product-image')){
-        $imagePath = $request->file('product-image')->store('product-profile', 'public');
-        $validatedData['product-image'] = $imagePath;
+        // Uloženie obrázka
+        if ($request->hasFile('product-image')) {
+            $imagePath = $request->file('product-image')->store('product-profile', 'public');
+            $validatedData['product-image'] = $imagePath;
+        }
+
+        // Vytvorenie nového produktu
+        $product = Product::create([
+            'image' => $validatedData['product-image'],
+            'name' => $validatedData['product-name'],
+            'description' => $validatedData['product-description'],
+            'price' => $validatedData['product-price'],
+        ]);
+
+        // Získanie vybranej kategórie
+        if ($validatedData['product-category']) {
+            $selectedCategory = Category::find($validatedData['product-category']);
+            // Uloženie vybranej kategórie
+            $product->categories()->attach($selectedCategory);
+
+            // Uloženie rodičovských kategórií
+            foreach ($selectedCategory->parentCategories() as $parentCategory) {
+                $product->categories()->attach($parentCategory);
+            }
+        }
+
+        // Presmerovanie po úspešnom uložení produktu
+        return redirect()->route('admin.product')->with('success', 'Produkt bol úspešne pridaný');
     }
-
-    // Vytvorenie nového produktu pomocou validovaných údajov
-    $product = Product::create([
-        'image' => $validatedData['product-image'],
-        'name' => $validatedData['product-name'],
-        'description' => $validatedData['product-description'],
-        'price' => $validatedData['product-price'],
-        'category_id' => $validatedData['product-category'], // Oprava pre priamy prístup
-    ]);
-
-    // Presmerovanie po úspešnom uložení produktu
-    return redirect()->route('admin.product')->with('success', 'Produkt bol úspešne pridaný');
-}
-
-
-
-    // Rozkliknutie produktu v dashboard sekcii
-    public function show(Product $product){
-        return view('includes.product-show', compact('product'));
-    }
-
 
 
 

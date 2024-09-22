@@ -95,7 +95,7 @@ Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 
 
 // Nezaradena routa
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product}', [DashboardController::class, 'show'])->name('products.show');
 
 
 // Profile routy

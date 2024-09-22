@@ -28,31 +28,48 @@ class DashboardController extends Controller
     // Kategorie
     $categories = Category::get()->toTree();
 
-    $cart = Cart::where('user_id', Auth::id())->first();
+     // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
+     $cart = Cart::where('user_id', Auth::id())->first();
+     $totalItems = $cart ? $cart->totalItems() : 0;
 
-    // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
-    $totalItems = $cart ? $cart->totalItems() : 0;
+
 
    return view('dashboard')->with([
     'categories' => $categories,
     'products' => $products,
     'totalItems' => $totalItems
+
 ]);
 }
 
-    public function showCategory($id){
 
-        // Načítajte kategóriu podľa ID
-        $category = Category::with('children')->find($id);
 
-        // Načítajte produkty, ktoré patria do danej kategórie (rovnaký category_id)
-        $products = Product::where('category_id', $id)->get();
+    public function showCategory($id)
+        {
+            $category = Category::with(['products'])->find($id);
+            $products = $category ? $category->products : collect();
+
+             // Získať rodičovské kategórie
+            $parentCategories = [];
+            $currentCategory = $category;
+
+            while ($currentCategory) {
+            array_unshift($parentCategories, $currentCategory);
+            $currentCategory = $currentCategory->parent;
+    }
 
          // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
         $cart = Cart::where('user_id', Auth::id())->first();
         $totalItems = $cart ? $cart->totalItems() : 0;
 
-        return view('includes.category-show', compact('category', 'products', 'totalItems',));
+        return view('includes.category-show', compact('category', 'products', 'totalItems', 'parentCategories'));
+    }
+
+    public function show(Product $product){
+         // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
+     $cart = Cart::where('user_id', Auth::id())->first();
+     $totalItems = $cart ? $cart->totalItems() : 0;
+        return view('includes.product-show', compact('product', 'totalItems'));
     }
 }
 
