@@ -25,7 +25,13 @@
         <td>{{$user->name}}</td>
         <td>{{$user->surname}}</td>
         <td>{{$user->email}}</td>
-        <td>{{$user->is_admin}}</td>
+        @if ($user->is_admin == 1)
+    <td>Áno</td>
+@else
+    <td>Nie</td>
+@endif
+
+
         <td><a class="btn ">X</a> <a href="{{route('admin.user.show', $user->id)}}" class="btn "> <i class="fa-solid fa-pen-to-square"></i></a> </td>
     @endforeach
 

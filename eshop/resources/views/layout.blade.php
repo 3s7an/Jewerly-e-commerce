@@ -36,10 +36,11 @@
     <title>Eshop</title>
 </head>
 
-<body class="bg-white-100 font-sans">
+<body class="bg-gray-100 font-sans">
+    
 
     @include('includes.navbar-search')
-    
+
 
 
 
