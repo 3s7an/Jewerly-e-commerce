@@ -4,7 +4,7 @@
 @include('includes.flash-message')
 
 <div class="flex justify-center min-h-screen">
-    <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-20">
+    <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-24">
 <h1 class="text-center text-3xl font-bold mb-5 mt-10">Obsah tvojho košíku</h1>
 
 @if ($cartItems->isNotEmpty())

@@ -3,7 +3,7 @@
 @section('content')
     @include('includes.flash-message')
 
-    <h1 class="text-center text-2xl font-semibold m-6">Zhrnutie objednávky</h1>
+    <h1 class="text-center text-2xl font-semibold mt-24 mb-8">Zhrnutie objednávky</h1>
 
     <!-- Dodacie údaje -->
     <div class="bg-white shadow-md rounded-lg p-6 mb-6 max-w-2xl mx-auto border border-gray-200">

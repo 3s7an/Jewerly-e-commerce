@@ -4,7 +4,7 @@
 @include('includes.flash-message')
 
 <div class="flex justify-center min-h-screen bg-gray-100 py-10">
-    <div class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-12">
+    <div class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-14">
         <h1 class="text-3xl font-semibold mb-6 text-gray-800">História objednávok</h1>
 
         @foreach ($orders as $order)
