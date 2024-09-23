@@ -68,9 +68,7 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id kategorie</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id rodičovskej kategorie</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazov kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum vzniku kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum updatu tabulky</th>
+
             <th class="px-6 py-3 text-left"></th>
         </tr>
     </thead>
@@ -80,9 +78,7 @@
             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $category->id }}</td>
             <td class="px-6 py-4 text-sm text-gray-500">{{ $category->parent_id }}</td>
             <td class="px-6 py-4 text-sm text-gray-500">{{ $category->name }}</td>
-            <td class="px-6 py-4 text-sm text-gray-500">{{ $category->slug }}</td>
-            <td class="px-6 py-4 text-sm text-gray-500">{{ $category->created_at }}</td>
-            <td class="px-6 py-4 text-sm text-gray-500">{{ $category->updated_at }}</td>
+            
             <td class="px-6 py-4 text-sm text-gray-500">
                 <div class="flex space-x-2">
                     <!-- Form to delete category -->

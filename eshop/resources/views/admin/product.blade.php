@@ -18,7 +18,7 @@
         <!-- Field for uploading product image -->
         <div class="mb-4">
             <label for="product-image" class="block text-gray-700 font-semibold mb-1">Fotka produktu</label>
-            <input class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" type="file" id="product-image" name="product-image">
+            <input class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2" type="file" id="product-image" name="product-image">
             @error('product-image')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
@@ -27,7 +27,7 @@
         <!-- Field for product name -->
         <div class="mb-4">
             <label for="product-name" class="block text-gray-700 font-semibold mb-1">Názov</label>
-            <input type="text" class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="product-name" id="product-name">
+            <input type="text" class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2" name="product-name" id="product-name">
             @error('product-name')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
@@ -36,7 +36,7 @@
         <!-- Product category selection -->
         <div class="mb-4">
             <label for="product-category" class="block text-gray-700 font-semibold mb-1">Kategória</label>
-            <select class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="product-category" id="product-category">
+            <select class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2" name="product-category" id="product-category">
                 <option value="0" selected>Žiadna</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -47,7 +47,7 @@
         <!-- Field for product description -->
         <div class="mb-4">
             <label for="product-description" class="block text-gray-700 font-semibold mb-1">Popis</label>
-            <textarea class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="product-description" id="product-description" rows="3"></textarea>
+            <textarea class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2" name="product-description" id="product-description" rows="3"></textarea>
             @error('product-description')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
@@ -56,7 +56,7 @@
         <!-- Field for product price -->
         <div class="mb-4">
             <label for="product-price" class="block text-gray-700 font-semibold mb-1">Cena</label>
-            <input type="text" class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" name="product-price" id="product-price">
+            <input type="text" class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2" name="product-price" id="product-price">
             @error('product-price')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
@@ -89,8 +89,7 @@
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategoria produktu</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Popis produktu</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cena produktu</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum vzniku kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum updatu tabulky</th>
+
             <th class="px-6 py-3"></th>
         </tr>
     </thead>
@@ -100,10 +99,9 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $product->id }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->name }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->category_id }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->description }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{  Str::limit($product->description, 20) }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->price }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->created_at }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $product->updated_at }}</td>
+
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <div class="flex space-x-2">
                     <!-- Form to delete product -->

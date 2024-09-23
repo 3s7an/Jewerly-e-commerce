@@ -1,8 +1,10 @@
-<nav class="bg-gray-200 text-gray fixed top-0 w-full z-50 shadow-lg">
+<nav class="bg-gray-200 bg-opacity-50 text-gray-800 fixed top-0 w-full z-50 shadow-lg">
+
+
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Logo -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-gray-900 font-lobster text-xxl sm:max-x:mx-4">Zlatníctvo</span>
+            <span class="text-gray-900 font-playpen text-xxl sm:max-x:mx-4">Zlatníctvo</span>
         </a>
 
         <!-- Searchbar -->

@@ -15,29 +15,31 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Pismo -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+ <!-- Pismo -->
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&family=Playpen+Sans:wght@100;400;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Tailwind custom config to add Lobster font -->
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              fontFamily: {
-                lobster: ['Lobster', 'cursive'],
-                raleway: ['Raleway', 'sans-serif'],
-              }
-            }
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            lobster: ['Lobster', 'cursive'],
+            raleway: ['Raleway', 'sans-serif'],
+            playpen: ['Playpen Sans', 'sans-serif'] // Opravené pomenovanie
           }
         }
-      </script>
+      }
+    }
+</script>
 
-
-    <title>Eshop</title>
+<title>Eshop</title>
 </head>
 
-<body class="bg-gray-100 font-sans">
-    
+<body class="bg-gray-100 font-playpen"> <!-- Opravené na správny názov -->
+
+
 
     @include('includes.navbar-search')
 

@@ -32,7 +32,7 @@
 @endif
 
 
-        <td><a class="btn ">X</a> <a href="{{route('admin.user.show', $user->id)}}" class="btn "> <i class="fa-solid fa-pen-to-square"></i></a> </td>
+        <td><a href="{{route('admin.user.show', $user->id)}}" class="btn "> <i class="fa-solid fa-pen-to-square"></i></a> </td>
     @endforeach
 
 <!-- KONIEC TABULKY -->
