@@ -5,8 +5,9 @@
             <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-20">
 
                 <nav class="breadcrumb mb-20">
+                    <a href="/">Domov ></a>
                     @foreach ($parentCategories as $parentCategory)
-                        <a href="{{ route('category.view.show', $parentCategory->id) }}" class="m-10">
+                        <a href="{{ route('category.view.show', $parentCategory->id) }}" class="mt-10">
                             {{ $parentCategory->name }}
                         </a>
                         @if (!$loop->last)
