@@ -47,14 +47,14 @@
             @enderror
         </div>
 
-        <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+        <button type="submit" class="w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300">
             Pridať
         </button>
     </form>
 </div>
 
 <div class="flex justify-center">
-    <button type="button" class="toggler bg-blue-500 text-white font-semibold py-1 px-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+    <button type="button" class="toggler bg-gray-800 text-white font-semibold py-1 px-3 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300">
         Pridať kategóriu
     </button>
 </div>
@@ -78,7 +78,7 @@
             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $category->id }}</td>
             <td class="px-6 py-4 text-sm text-gray-500">{{ $category->parent_id }}</td>
             <td class="px-6 py-4 text-sm text-gray-500">{{ $category->name }}</td>
-            
+
             <td class="px-6 py-4 text-sm text-gray-500">
                 <div class="flex space-x-2">
                     <!-- Form to delete category -->
@@ -92,7 +92,7 @@
 
                     <!-- Form to edit category -->
                     <form action="" method="GET">
-                        <button type="submit" class="bg-blue-500 text-white font-semibold py-1 px-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <button type="submit" class="bg-gray-800 text-white font-semibold py-1 px-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </form>
