@@ -39,14 +39,11 @@
 <body class="bg-white-100 font-sans">
 
     @include('includes.navbar-search')
-    @include('includes.header')
+    
 
-    <div class="flex justify-center min-h-screen">
-        <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg border-2 border-t-4">
+
 
             @yield('content')
-        </div>
-    </div>
 
     {{-- FOOTER WITH LINKS --}}
     <footer class="bg-gray-800 text-white py-4 mt-8">

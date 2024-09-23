@@ -13,10 +13,10 @@ class UserController extends Controller
 
     /* Profile časť */
 
-    public function editData(User $user){
+    public function editData(User $user)
+    {
 
         return view('profile.profile-change-user-data');
-
     }
 
     public function updateData(User $user)
@@ -54,24 +54,18 @@ class UserController extends Controller
         return view('admin.user', ['users' => $users, 'products' => $products, 'categories' => $categories]);
     }
 
-    public function show(User $user){
+    public function show(User $user)
+    {
 
         return view('admin.user-show', compact(['user']));
-
-
-
-
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $user->update([
             'is_admin' => $request->input('is_admin'),
         ]);
 
         return redirect()->route('admin.users');
     }
-
-
-
 }
-

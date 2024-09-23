@@ -1,7 +1,10 @@
-@extends('profile.layout')
+@extends('layout')
 
 @section('content')
 @include('includes.flash-message')
+
+<div class="flex justify-center min-h-screen">
+    <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-20">
 
 <div class="container mx-auto px-4 py-8">
     <div class="flex flex-col md:flex-row md:space-x-8">
@@ -76,6 +79,9 @@
                 </div>
             </form>
         </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -159,7 +165,7 @@ $(document).ready(function() {
                 // Tu môžeš spracovať odpoveď z Laravel backendu
                 alert("Údaje boli úspešne uložené");
                 toggleReadOnly(true);
-               
+
 
             },
             error: function(xhr, status, error) {

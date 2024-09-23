@@ -11,9 +11,20 @@
     <div class="flex justify-center">
         <!-- This div is empty but can be used for further content or styling -->
     </div>
-    <form action="{{ route('category.store') }}" method="post" class="p-6 border rounded-lg shadow-lg bg-white w-1/2 mx-auto mb-5">
+    <form action="{{ route('category.store') }}" method="post" class="p-6 border rounded-lg shadow-lg bg-white w-1/2 mx-auto mb-5" enctype="multipart/form-data">
         @csrf
-        <h4 class="text-center text-lg font-semibold mb-4">Pridať kategóriu</h4>
+
+
+
+        <div class="mb-4">
+            <label for="category-img" class="block text-gray-700 font-semibold mb-2">Obrázok kategórie:</label>
+            <input type="file" name="category-img" id="category-img" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="">
+            @error('category-img')
+                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+            @enderror
+        </div>
+
+
 
         <div class="mb-4">
             <label for="category-name" class="block text-gray-700 font-semibold mb-2">Názov kategórie:</label>

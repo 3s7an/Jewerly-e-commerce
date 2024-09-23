@@ -1,11 +1,11 @@
-<nav class="bg-gray-100 text-gray ">
+<nav class="bg-gray-200 text-gray fixed top-0 w-full z-50 shadow-lg">
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Logo -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-gray-800 font-lobster text-xxl sm:max-x:mx-4">Zlatníctvo</span>
+            <span class="text-gray-900 font-lobster text-xxl sm:max-x:mx-4">Zlatníctvo</span>
         </a>
 
-        <!-- Searchbar-->
+        <!-- Searchbar -->
         <div class="hidden md:block">
             <form class="flex" action="{{ route('dashboard') }}" method="get">
                 @csrf
@@ -14,9 +14,8 @@
             </form>
         </div>
 
-
         <div class="flex items-center space-x-4">
-            <!-- Auth linky  -->
+            <!-- Auth linky -->
             @auth
             <div class="relative">
                 <!-- User toggler -->
@@ -35,7 +34,6 @@
                 </div>
             </div>
             <a href="{{ route('cart.index') }}" class="ml-4">
-
                 <div class="relative inline-block">
                     <i class="fa-solid fa-cart-shopping text-2xl"></i>
                     @if($totalItems > 0)
@@ -44,7 +42,6 @@
                         </span>
                     @endif
                 </div>
-
             </a>
             @endauth
 
@@ -60,10 +57,11 @@
         <form class="flex" action="{{ route('dashboard') }}" method="get">
             @csrf
             <input class="form-input w-full rounded-l-md border-2 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
-            <button class="bg-gray-800  text-white rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
+            <button class="bg-gray-800 text-white rounded-r-md px-4 py-2" type="submit">Vyhladať</button>
         </form>
     </div>
 </nav>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

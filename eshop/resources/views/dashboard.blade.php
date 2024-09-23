@@ -2,9 +2,12 @@
 
 @section('content')
 @include('includes.flash-message')
+@include('includes.header')
+<div class="flex justify-center min-h-screen">
+    <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg ">
 
 <div class="min-h-screen flex flex-col">
-   
+
 
     <!-- Zvyšný obsah zarovnaný na stred -->
     <div class="flex flex-col items-center justify-center w-full">
@@ -20,5 +23,10 @@
         </div>
     </div>
 </div>
+
+</div>
+</div>
+
+
 @endsection
 

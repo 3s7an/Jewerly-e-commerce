@@ -28,11 +28,18 @@ class CategoryController extends Controller
 {
     $request->validate([
         'category-name' => 'required|min:3|max:20',
-        'parent_id' => 'nullable|exists:categories,id'
+        'parent_id' => 'nullable|exists:categories,id',
+        'category-img' => 'required|image'
     ]);
 
+    if($request->has('category-img')){
+        $imagePath = $request->file('category-img')->store('category-img', 'public');
+        $request->merge(['category-img' => $imagePath]);
+    }
+
     $category = new Category([
-        'name' => $request->input('category-name', '')
+        'name' => $request->input('category-name', ''),
+        'image' => $request->input('category-img')
     ]);
 
     if ($request->filled('parent-id') && $request->input('parent-id') != 0) {

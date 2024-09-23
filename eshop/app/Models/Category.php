@@ -18,7 +18,8 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'parent_id'
+        'parent_id',
+        'image'
     ];
 
     public function products()
@@ -55,8 +56,16 @@ class Category extends Model
             return $parents;
         }
 
+        public function getImageURL(){
+            if($this->image){
+                return url('storage/' . $this->image);
+            }
+            return 'https://via.placeholder.com/800x400';
+        }
+        }
 
 
 
 
-}
+
+

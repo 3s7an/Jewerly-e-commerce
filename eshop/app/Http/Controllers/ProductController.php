@@ -11,8 +11,8 @@ class ProductController extends Controller
 {
 
     // Zobrazenie produktov v admin sekcii
-    public function index(){
-
+    public function index()
+        {
 
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
@@ -20,19 +20,18 @@ class ProductController extends Controller
         $categories = Category::all();
 
 
-        return view('admin.product',['products' => $products, 'categories' => $categories]);
+        return view('admin.product', ['products' => $products, 'categories' => $categories]);
     }
 
 
-    public function interIndex(){
+    public function interIndex()
+    {
 
         $products = Product::all();
         $categories = Category::all();
-        
+
         return view('admin.add-product', compact('products', 'categories'));
     }
-
-
 
 
     public function store(Request $request)
@@ -81,7 +80,8 @@ class ProductController extends Controller
 
 
     // Editovanie produktu v admin sekcii
-    public function edit(){
+    public function edit()
+    {
 
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
@@ -93,7 +93,8 @@ class ProductController extends Controller
 
 
     // Zmeny produktu v admin sekcii
-    public function update(Product $product, Request $request){
+    public function update(Product $product, Request $request)
+    {
 
         // Validácia zmien produktu
         $validated = $request->validate([
@@ -114,7 +115,8 @@ class ProductController extends Controller
 
 
     // Odstranenie produktu v admin sekcii
-    public function destroy($id){
+    public function destroy($id)
+    {
 
         // Najdenie produktu
         $product = Product::where('id', $id)->first();
@@ -126,4 +128,3 @@ class ProductController extends Controller
         return redirect()->route('admin.product')->with('success', 'Produkt bol úspešne zmazaný');
     }
 }
-
