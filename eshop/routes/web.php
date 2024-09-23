@@ -105,6 +105,9 @@ Route::get('/profile/{user}/edit', [UserController::class, 'editData'])->name('p
 
 Route::post('/profile/update-data', [ProfileController::class, 'updateUserData'])->name('profile.update');
 
+Route::get('/my-orders', [ProfileController::class, 'myOrdersShow'])->name('my-orders.show');
+
+
 
 
 

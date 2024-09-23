@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,4 +51,17 @@ class ProfileController extends Controller
 
     return response()->json(['success' => 'Údaje boli úspešne uložené']);
 }
+
+public function myOrdersShow()
+{
+    // Načítanie objednávok pre prihláseného používateľa
+    $orders = Order::where('user_id', Auth::id())->get();
+
+    // total items - navbar
+    $cart = Cart::where('user_id', Auth::id())->first();
+    $totalItems = $cart ? $cart->totalItems() : 0;
+
+    return view('profile.my-orders', compact('orders', 'totalItems'));
+}
+
 }

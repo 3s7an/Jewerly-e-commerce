@@ -47,35 +47,35 @@
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Meno:</label>
                         <input type="text" name="name" id="name"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->name }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
+                            value="{{ Auth::user()->name }}" >
                     </div>
 
                     <div class="mb-4">
                         <label for="surname" class="block text-sm font-medium text-gray-700">Priezvisko:</label>
                         <input type="text" name="surname" id="surname"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->surname }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
+                            value="{{ Auth::user()->surname }}" >
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
                         <input type="email" name="email" id="email"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->email }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100" readonly
+                            value="{{ Auth::user()->email }}" >
                     </div>
 
                     <div class="mb-4">
                         <label for="address" class="block text-sm font-medium text-gray-700">Dodacia adresa:</label>
                         <input type="text" name="street" id="street"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->street }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
+                            value="{{ Auth::user()->street }}" >
                         <input type="text" name="zipcode" id="zipcode"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->zipcode }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
+                            value="{{ Auth::user()->zipcode }}" >
                         <input type="text" name="city" id="city"
-                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed"
-                            value="{{ Auth::user()->city }}" readonly>
+                            class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
+                            value="{{ Auth::user()->city }}" >
                     </div>
                 @endif
             </div>
@@ -93,7 +93,7 @@
             </div>
 
 
-        
+
     </div>
 
     <!-- Kosik sekcia -->
