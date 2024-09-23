@@ -80,14 +80,14 @@ class ProductController extends Controller
 
 
     // Editovanie produktu v admin sekcii
-    public function edit()
+    public function edit(Product $product)
     {
 
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
         $categories = Category::all();
 
-        return view('admin.product-edit', compact('categories', 'products'));
+        return view('admin.product-edit', compact('categories', 'product'));
     }
 
 
@@ -101,6 +101,7 @@ class ProductController extends Controller
             'name' => 'min:3|max:20',
             'description' => 'min:3|max:20',
             'price' => 'min:3|max:20',
+            
         ]);
 
         // Updatnutie produktov, ulozenie novych udajov z inputov do databaze

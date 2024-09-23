@@ -21,7 +21,7 @@
 
 <body class="bg-gray-100">
 
-    <div class="flex h-screen max-w-7xl mx-auto my-0 p-6 mt-4 mb-4 bg-white rounded-lg shadow-lg">
+    <div class="flex  max-w-7xl mx-auto my-0 p-6 mt-4 mb-4 bg-white rounded-lg shadow-lg">
       @include('admin.sidebar')
 
         <!-- Main Content -->

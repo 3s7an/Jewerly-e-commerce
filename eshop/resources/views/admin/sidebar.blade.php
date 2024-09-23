@@ -6,9 +6,7 @@
 
 <!-- Navigation -->
 <ul class="space-y-2">
-<li>
-  <a href="#dashboard" class="block text-white hover:bg-blue-800 rounded-md px-3 py-2 transition duration-200">Hlavná stranka</a>
-</li>
+
 <li>
   <a href="{{route('admin.orders')}}" class="block text-white hover:bg-blue-800 rounded-md px-3 py-2 transition duration-200">Objednávky</a>
 </li>
@@ -21,6 +19,9 @@
 <li>
   <a href="{{route('admin.category')}}" class="block text-white hover:bg-blue-800 rounded-md px-3 py-2 transition duration-200">Kategórie</a>
 </li>
+<li>
+    <a href="/" class="block text-white hover:bg-blue-800 rounded-md px-3 py-2 transition duration-200 mt-20">Spať na hlavnú stránku</a>
+  </li>
 </ul>
 </div>
 

@@ -2,42 +2,68 @@
 
 @section('content')
 
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <form action="{{ route('admin.user.update', $user->id) }}" method="post" class="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
-        @csrf
-        @method('put')
-        <h1 class="text-center text-2xl font-semibold mb-6">Editovať uživateľa</h1>
+<div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white">
+        <h1 class="text-center">Editovať užívateľa</h1>
+    </div>
 
-        <div class="mb-4">
-            <label for="name" class="block text-gray-700 font-medium mb-2">Meno:</label>
-            <input type="text" value="{{ $user->name }}" readonly class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" id="name">
-        </div>
+    <div class="card-body">
+        <form action="{{ route('admin.user.update', $user->id) }}" method="post">
+            @csrf
+            @method('put')
 
-        <div class="mb-4">
-            <label for="surname" class="block text-gray-700 font-medium mb-2">Priezvisko:</label>
-            <input type="text" value="{{ $user->surname }}" readonly class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" id="surname">
-        </div>
+            <div class="container">
+                <!-- Informácie o užívateľovi -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h5 class="text-muted">Osobné informácie</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Meno</label>
+                                <input type="text" id="name" class="form-control" value="{{ $user->name }}" readonly>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="surname" class="form-label">Priezvisko</label>
+                                <input type="text" id="surname" class="form-control" value="{{ $user->surname }}" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" id="email" class="form-control" value="{{ $user->email }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-medium mb-2">Email:</label>
-            <input type="text" value="{{ $user->email }}" readonly class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" id="email">
-        </div>
+                <!-- Oprávnenia administrátora -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h5 class="text-muted">Oprávnenia administrátora</h5>
+                        <select name="is_admin" id="is_admin" class="form-select">
+                            @if ($user->is_admin === 0)
+                                <option value="0" selected>Nie</option>
+                                <option value="1">Áno</option>
+                            @else
+                                <option value="1" selected>Áno</option>
+                                <option value="0">Nie</option>
+                            @endif
+                        </select>
+                    </div>
+                </div>
 
-        <div class="mb-6">
-           <label for="is_admin" class="block text-gray-700 font-medium mb-2">Oprávnenia administrátora:</label>
-            <select name="is_admin" id="is_admin" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                @if ($user->is_admin === 0)
-                    <option value="{{ $user->value }}">Nie</option>
-                    <option value="1">Áno</option>
-                @else
-                    <option value="{{ $user->value }}">Áno</option>
-                    <option value="0">Nie</option>
-                @endif
-            </select>
-        </div>
-
-        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition duration-200">Uložiť</button>
-    </form>
+                <!-- Tlačidlo uloženia -->
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-secondary" href="{{ route('admin.users') }}">
+                        <i class="fas fa-arrow-left"></i> Spať
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Uložiť
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 @endsection

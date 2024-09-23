@@ -1,8 +1,8 @@
 @extends('admin.layout')
 
 @section('content')
-<h1 class="text-center mb-4">Uživatelia</h1>
-<hr>
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Uživatelia</h1>
+
 <!-- TABULKA -->
 
 <!-- Hlava tabulky -->

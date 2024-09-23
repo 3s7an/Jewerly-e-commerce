@@ -3,8 +3,8 @@
 @section('content')
 @include('includes.flash-message')
 
-<h1 class="text-center mb-4">Objednávky</h1>
-<hr>
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Objednávky</h1>
+
 <table class="table table-hover mt-5">
     <tr>
         <td>Čislo objednavky</td>

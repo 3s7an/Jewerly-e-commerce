@@ -3,11 +3,11 @@
 @section('content')
 @include('includes.flash-message')
 
-<h1 class="text-center mb-4">Kategórie</h1>
-<hr class="my-6">
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Kategórie</h1>
+
 
 <!-- Hidden Form Toggle Container -->
-<div class="form_toggle hidden"> <!-- Initially hidden form -->
+<div class="form_toggle hidden mt-10"> <!-- Initially hidden form -->
     <div class="flex justify-center">
         <!-- This div is empty but can be used for further content or styling -->
     </div>
@@ -61,8 +61,10 @@
 
 
 
+
+
 <!-- Table -->
-<table class="min-w-full divide-y divide-gray-200 mt-5">
+<table class="min-w-full table table-hover mt-20">
     <thead class="bg-gray-50">
         <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id kategorie</th>
