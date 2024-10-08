@@ -10,12 +10,16 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\UserIsAdmin;
 use Illuminate\Support\Facades\Route;
 
 
 // Dashboard routa
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/category/show{category}', [DashboardController::class, 'showCategory'])->name('category.view.show');
+
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 // Admin routy
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {

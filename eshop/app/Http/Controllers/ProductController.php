@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function search(Request $request)
+    {
+        $query = $request->get('search');
+
+        // Predpokladáme, že chcete hľadať v názvoch produktov
+        $products = Product::where('name', 'LIKE', '%' . $query . '%')->get();
+
+        // Vráťte produkty ako JSON
+        return response()->json($products);
+    }
 
     // Zobrazenie produktov v admin sekcii
     public function index()
@@ -101,7 +111,7 @@ class ProductController extends Controller
             'name' => 'min:3|max:20',
             'description' => 'min:3|max:20',
             'price' => 'min:3|max:20',
-            
+
         ]);
 
         // Updatnutie produktov, ulozenie novych udajov z inputov do databaze

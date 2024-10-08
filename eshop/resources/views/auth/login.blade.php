@@ -1,7 +1,8 @@
 @extends('layout')
 
 @section('content')
-
+<div class="flex justify-center min-h-screen">
+    <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-24">
 <div class="container mx-auto">
     <div class="flex justify-center">
         <div class="w-full sm:w-3/4 md:w-1/2">
@@ -34,6 +35,8 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
     </div>
 </div>
 
