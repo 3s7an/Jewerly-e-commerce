@@ -42,7 +42,7 @@
             <div class="mb-4">
                 <label for="product-category" class="block text-gray-700 font-semibold mb-1">Kategória</label>
                 <select
-                    class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 p-2 appearance-none bg-white">
+                    class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 p-2 appearance-none bg-white" name="product-category">
                     <option value="0" selected>Žiadna</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" class="text-gray-900 hover:bg-gray-100 focus:bg-transparent">

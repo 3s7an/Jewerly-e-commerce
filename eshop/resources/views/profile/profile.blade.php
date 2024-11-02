@@ -74,7 +74,7 @@
                 <button class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 w-full mt-auto contact-button" type="submit">Zmeniť údaje</button>
 
                 <div class="buttons hidden">
-                    <button class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2  mt-auto back-button" type="submit">Spať / zahodit zmeny</button>
+                    <button class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2  mt-auto back-button" type="submit">Spať</button>
                     <button class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2  mt-auto save-button" type="submit">Uložit údaje údaje</button>
                 </div>
             </form>
@@ -101,10 +101,11 @@ $(document).ready(function() {
 }
 
 
-    // Resetovanie hodnoty (vyuzitie pri tlacitku spat/zahodit)
+    /* Resetovanie hodnoty (vyuzitie pri tlacitku spat/zahodit)
     function resetValue(){
             $("#firstName, #lastName, #street, #postalCode, #city").val("");
     }
+            */
 
 
 

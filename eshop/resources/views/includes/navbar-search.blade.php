@@ -32,7 +32,11 @@
                 <div id="user-dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 hidden">
                     <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('profile.index') }}">Profil</a>
                     <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{route('my-orders.show')}}">Moje objednávky</a>
+                   
+                    @if (Auth::user()->is_admin == 1)
                     <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('admin.dashboard') }}">Admin panel</a>
+                @endif
+                    
                     <div class="border-t my-2"></div>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
