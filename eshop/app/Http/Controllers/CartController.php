@@ -70,13 +70,7 @@ class CartController extends Controller
 
         $cartItem = CartItem::findOrFail($cartItemId);
 
-        if($cartItem->quantity == 1){
         $cartItem->delete();
-        }
-        else{
-            $cartItem->quantity -= 1;
-            $cartItem->save();
-        }
 
         return redirect()->back()->with('success', 'Produkt bol úspešne odobratý z košíku!');
     }

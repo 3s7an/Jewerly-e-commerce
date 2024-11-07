@@ -89,7 +89,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        document).ready(function() {
+        $(document).ready(function() {
             function updateQuantity(itemId, newValue) {
                 // AJAX request to update the model in the database
                 $.ajax({
@@ -112,7 +112,7 @@
             }
 
 
-            '.plus').click(function() {
+            $('.plus').click(function() {
             var $input = $(this).siblings('.item_quantity');
             var currentValue = parseInt($input.val(), 10);
             var itemId = $(this).data('item-id');
@@ -121,21 +121,22 @@
             $input.val(newValue); // Update input field value
 
             updateQuantity(itemId, newValue); // Call function to update the quantity
-        });
+            });
 
-        $('.minus').click(function() {
-            var $input = $(this).siblings('.item_quantity');
-            var currentValue = parseInt($input.val(), 10);
-            var minValue = parseInt($input.attr('min'), 10) || 1; // Ensure there's a minimum value of 1
-            var itemId = $(this).data('item-id');
+                $('.minus').click(function() {
+                var $input = $(this).siblings('.item_quantity');
+                var currentValue = parseInt($input.val(), 10);
+                var minValue = parseInt($input.attr('min'), 10) || 1; // Ensure there's a minimum value of 1
+                var itemId = $(this).data('item-id');
 
-            if (currentValue > minValue) {
-                var newValue = currentValue - 1; // Decrease the quantity by 1
-                $input.val(newValue); // Update input field value
+                if (currentValue > minValue) {
+                    var newValue = currentValue - 1; // Decrease the quantity by 1
+                    $input.val(newValue); // Update input field value
 
-                updateQuantity(itemId, newValue); // Call function to update the quantity
-            }
-        });
+                    updateQuantity(itemId, newValue); // Call function to update the quantity
+                }
+            });
+    
         });
     </script>
 

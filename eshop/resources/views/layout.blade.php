@@ -37,7 +37,7 @@
 <title>Eshop</title>
 </head>
 
-<body class="bg-gray-100 font-playpen"> <!-- Opravené na správny názov -->
+<body class="bg-gray-100 font-playpen"> 
 
 
 
