@@ -100,16 +100,14 @@ $(document).ready(function() {
     }
 }
 
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var email = $("#email").val();
+        var street = $("#street").val();
+        var postalCode = $("#postalCode").val();
+        var city = $("#city").val();
 
-    /* Resetovanie hodnoty (vyuzitie pri tlacitku spat/zahodit)
-    function resetValue(){
-            $("#firstName, #lastName, #street, #postalCode, #city").val("");
-    }
-            */
-
-
-
-    // Po kliknuti na tlacitko zmenit udaje sa objavia tlacitka spat a ulozit
+// Po kliknuti na tlacitko zmenit udaje sa objavia tlacitka spat a ulozit
     $(".contact-button").click(function (e) {
         e.preventDefault();
         $(this).hide();
@@ -126,7 +124,14 @@ $(document).ready(function() {
         $(".contact-button").show();
         $(".buttons").hide();
         toggleReadOnly(true);
-        resetValue();
+
+        $("#firstName").val(firstName);
+        $("#lastName").val(lastName);
+        $("#email").val(email);
+        $("#street").val(street);
+        $("#postalCode").val(postalCode);
+        $("#city").val(city);
+
     });
 
     // Tlacitko ulozit posiela data laravelu
