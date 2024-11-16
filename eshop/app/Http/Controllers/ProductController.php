@@ -95,34 +95,43 @@ class ProductController extends Controller
 
         $query = Product::orderBy('created_at', 'DESC');
         $products = $query->get();
-        $categories = Category::all();
+        $categories = $product->categories;
 
         return view('admin.product-edit', compact('categories', 'product'));
     }
 
 
 
-    // Zmeny produktu v admin sekcii
-    public function update(Product $product, Request $request)
-    {
+    public function update(Request $request, Product $product)
+{
+    // Validace vstupů
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'price' => 'required|numeric|min:0',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'required|string|max:255',
+    ]);
 
-        // Validácia zmien produktu
-        $validated = $request->validate([
-            'name' => 'min:3|max:20',
-            'description' => 'min:3|max:20',
-            'price' => 'min:3|max:20',
-
-        ]);
-
-        // Updatnutie produktov, ulozenie novych udajov z inputov do databaze
-        $product->update([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'price' => $validated['price'],
-        ]);
+    // Zpracování obrázku, pokud byl nahrán nový
+    if ($request->hasFile('image')) {
+        // Uložení nového obrázku
+        $path = $request->file('image')->store('public/category-img');
+        // Aktualizace cesty k obrázku v databázi
+        $product->image = basename($path);
     }
 
+    // Aktualizace ostatních dat produktu
+    $product->name = $validatedData['name'];
+    $product->price = $validatedData['price'];
+    $product->description = $validatedData['description'];
 
+    // Uložení všech dat produktu do databáze
+    $product->save();
+
+    return redirect()->back()->with('success', 'Produkt byl aktualizován.');
+}
+
+    
 
 
     // Odstranenie produktu v admin sekcii

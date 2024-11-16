@@ -22,14 +22,14 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_product');
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
     public function getImageURL(){
-    if($this->image){
-        return url('storage/' . $this->image);
+        if($this->image){
+            return url('storage/' . $this->image);
+        }
+        return 'https://via.placeholder.com/800x400';
     }
-    return 'http://www.w3.org/2000/svg';
-}
 }
 

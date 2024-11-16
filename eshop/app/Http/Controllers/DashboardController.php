@@ -45,7 +45,7 @@ class DashboardController extends Controller
 
 
     public function showCategory($id)
-        {
+    {
             $category = Category::with(['products'])->find($id);
             $products = $category ? $category->products : collect();
 
@@ -54,9 +54,9 @@ class DashboardController extends Controller
             $currentCategory = $category;
 
             while ($currentCategory) {
-            array_unshift($parentCategories, $currentCategory);
-            $currentCategory = $currentCategory->parent;
-    }
+                array_unshift($parentCategories, $currentCategory);
+                $currentCategory = $currentCategory->parent;
+            }
 
          // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
         $cart = Cart::where('user_id', Auth::id())->first();
@@ -66,9 +66,10 @@ class DashboardController extends Controller
     }
 
     public function show(Product $product){
+        
          // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
-     $cart = Cart::where('user_id', Auth::id())->first();
-     $totalItems = $cart ? $cart->totalItems() : 0;
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $totalItems = $cart ? $cart->totalItems() : 0;
         return view('includes.product-show', compact('product', 'totalItems'));
     }
 }

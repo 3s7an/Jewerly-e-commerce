@@ -1,7 +1,4 @@
 
-
-
-
 @extends('admin.layout')
 
 @section('content')
@@ -12,9 +9,9 @@
     </div>
 
     <div class="card-body">
-        <form action="" method="post">
+        <form action="{{route('products.update', $product->id)}}" method="post">
             @csrf
-            @method('put')
+            @method('PUT')
 
             <div class="container">
                 <!-- Informácie o produkte -->
@@ -22,24 +19,49 @@
                     <div class="col-md-12">
                         <h5 class="text-muted">Informácie o produkte</h5>
                         <div class="row">
+                         <!-- Obrázok produktu -->
+                    <div class="col-md-6 mb-3">
+                        <label for="image" class="form-label">Obrázok produktu</label>
+                        
+                        <!-- Zobrazení aktuálního obrázku, pokud existuje -->
+                        @if($product->image)
+                            <img src="{{ $product->getImageURL() }}" alt="Obrázok produktu" class="img-fluid mb-3" id="current-image">
+                        @endif
+
+                        <!-- Input pre nahranie noveho obrazku -->
+                        <input type="file" id="image" name="image" class="form-control">
+                    </div>
+
                             <!-- Názov produktu -->
                             <div class="col-md-6 mb-3">
+                                <!-- Názov produktu -->
                                 <label for="name" class="form-label">Názov produktu</label>
-                                <input type="text" id="name" name="name" class="form-control" value="{{ $product->name }}">
+                                <input type="text" id="name" name="name" class="form-control mb-4" value="{{ $product->name }}">
+                            
+                                <!-- Kategória produktu -->
+                                <div class="mb-4">
+                                    <label for="category_id" class="form-label">Kategórie</label>
+                                    <select id="category_id" name="category_id" class="form-select">
+                                        <!-- Príklad: Dynamicky načítané možnosti kategórie -->
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" 
+                                                {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            
+                                <!-- Cena produktu -->
+                                <div class="mb-4">
+                                    <label for="price" class="form-label">Cena</label>
+                                    <input type="number" step="0.01" id="price" name="price" class="form-control" value="{{ $product->price }}">
+                                </div>
                             </div>
+                            
 
-                            <!-- Kategória produktu -->
-                            <div class="col-md-6 mb-3">
-                                <label for="category_id" class="form-label">Kategória</label>
-                                <select id="category_id" name="category_id" class="form-select">
-                                    <!-- Vybraná kategória -->
-                                    <option value="{{ $product->category_id }}"></option>
-                                    <!-- Ostatné kategórie môžu byť dynamicky pridané -->
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                          
+                            
                         </div>
 
                         <!-- Popis produktu -->
@@ -54,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="price" class="form-label">Cena</label>
-                                <input type="text" id="price" name="price" class="form-control" value="{{ $product->price }}">
+                                <input type="price" id="price" name="price" class="form-control" value="{{ $product->price }}">
                             </div>
                         </div>
                     </div>
