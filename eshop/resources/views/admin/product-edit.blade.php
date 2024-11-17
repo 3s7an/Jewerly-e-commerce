@@ -22,7 +22,7 @@
                          <!-- Obrázok produktu -->
                     <div class="col-md-6 mb-3">
                         <label for="image" class="form-label">Obrázok produktu</label>
-                        
+
                         <!-- Zobrazení aktuálního obrázku, pokud existuje -->
                         @if($product->image)
                             <img src="{{ $product->getImageURL() }}" alt="Obrázok produktu" class="img-fluid mb-3" id="current-image">
@@ -37,31 +37,31 @@
                                 <!-- Názov produktu -->
                                 <label for="name" class="form-label">Názov produktu</label>
                                 <input type="text" id="name" name="name" class="form-control mb-4" value="{{ $product->name }}">
-                            
+
                                 <!-- Kategória produktu -->
                                 <div class="mb-4">
                                     <label for="category_id" class="form-label">Kategórie</label>
                                     <select id="category_id" name="category_id" class="form-select">
                                         <!-- Príklad: Dynamicky načítané možnosti kategórie -->
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" 
+                                            <option value="{{ $category->id }}"
                                                 {{ $product->category_id == $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-                            
+
                                 <!-- Cena produktu -->
                                 <div class="mb-4">
                                     <label for="price" class="form-label">Cena</label>
                                     <input type="number" step="0.01" id="price" name="price" class="form-control" value="{{ $product->price }}">
                                 </div>
                             </div>
-                            
 
-                          
-                            
+
+
+
                         </div>
 
                         <!-- Popis produktu -->
@@ -84,7 +84,7 @@
 
                 <!-- Tlačidlá -->
                 <div class="d-flex justify-content-between">
-                    <a class="btn btn-secondary" href="">
+                    <a class="btn btn-secondary" href="{{route('admin.product')}}">
                         <i class="fas fa-arrow-left"></i> Spať
                     </a>
                     <button type="submit" class="btn btn-primary">

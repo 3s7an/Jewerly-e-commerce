@@ -37,10 +37,10 @@ class Category extends Model
            return $this->hasMany(Category::class, 'parent_id');
        }
 
-       // Kategória môže patriť k jednej rodičovskej kategórii
+
        public function parentCategory()
        {
-           return $this->belongsTo(Category::class, 'parent_id');
+           return $this->belongsTo(Category::class, 'parent_id', 'id');
        }
 
        public function parentCategories(){
@@ -48,7 +48,7 @@ class Category extends Model
         $parents = collect();
 
             $currentCategory = $this;
-            while ($currentCategory->parentCategory) { // Predpokladáme, že máš vzťah na rodičov
+            while ($currentCategory->parentCategory) {
                 $currentCategory = $currentCategory->parentCategory;
                 $parents->push($currentCategory);
             }

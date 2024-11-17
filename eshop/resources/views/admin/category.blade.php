@@ -69,6 +69,7 @@
         <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id kategorie</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id rodičovskej kategorie</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Názov rodičovskej kategorie</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazov kategorie</th>
 
             <th class="px-6 py-3 text-left"></th>
@@ -78,7 +79,8 @@
         @foreach ($categories as $category)
         <tr>
             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $category->id }}</td>
-            <td class="px-6 py-4 text-sm text-gray-500">{{ $category->parent_id }}</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{$category->parent_id }}</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{$category->parentCategory?$category->parentCategory->name:'' }}</td>
             <td class="px-6 py-4 text-sm text-gray-500">{{ $category->name }}</td>
 
             <td class="px-6 py-4 text-sm text-gray-500">
