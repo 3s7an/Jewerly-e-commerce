@@ -21,6 +21,8 @@ Route::get('/category/show{category}', [DashboardController::class, 'showCategor
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
+Route::get('/products/{product}', [DashboardController::class, 'show'])->name('products.show');
+
 // Admin routy
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
@@ -59,10 +61,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::put('/orders/{order}', [OrderController::class, 'update'])->name('admin.order.update');
 
 
-
-
-
-
 });
 
 
@@ -97,13 +95,6 @@ Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 
 
-
-
-
-// Nezaradena routa
-Route::get('/products/{product}', [DashboardController::class, 'show'])->name('products.show');
-
-
 // Profile routy
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
@@ -115,24 +106,4 @@ Route::get('/my-orders', [ProfileController::class, 'myOrdersShow'])->name('my-o
 
 
 
-
-
-
-
-/*
-ADMIN ROUTY ZALOHA
-Route::post('admin/products', [ProductController::class, 'store'])->name('products.store')->middleware('auth');
-
-Route::delete('admin/products{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('auth');
-
-Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
-
-Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.product')->middleware('auth');
-
-Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category')->middleware('auth');
-
-Route::post('admin/category', [CategoryController::class, 'store'])->name('category.store')->middleware('auth');
-
-Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users')->middleware('auth');
-*/
 
