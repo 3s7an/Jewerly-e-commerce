@@ -24,7 +24,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/products/{product}', [DashboardController::class, 'show'])->name('products.show');
 
 // Admin routy
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
