@@ -44,32 +44,52 @@ class DashboardController extends Controller
 
 
 
-    public function showCategory($id)
-    {
-            $category = Category::with(['products'])->find($id);
-            $products = $category ? $category->products : collect();
+    public function showCategory($id, Request $request){
 
-             // Získať rodičovské kategórie
-            $parentCategories = [];
-            $currentCategory = $category;
+        $category = Category::with('products')->where('id', $id)->first();
 
-            while ($currentCategory) {
-                array_unshift($parentCategories, $currentCategory);
-                $currentCategory = $currentCategory->parent;
+        if ($category) {
+            $products = $category->products()->newQuery();
+
+            if ($request->has('price_low')) {
+                $products->orderBy('price', 'ASC');
+            } elseif ($request->has('price_high')) {
+                $products->orderBy('price', 'DESC');
+            } elseif ($request->has('date_new')) {
+                $products->orderBy('updated_at', 'DESC');
+            } elseif ($request->has('date_old')) {
+                $products->orderBy('updated_at', 'ASC');
+            } elseif ($request->has('default')) {
+
             }
 
-         // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
-        $cart = Cart::where('user_id', Auth::id())->first();
-        $totalItems = $cart ? $cart->totalItems() : 0;
+            $products = $products->get();
+        } else {
+            $products = collect();
+        }
 
-        return view('includes.category-show', compact('category', 'products', 'totalItems', 'parentCategories'));
+       // Získať rodičovské kategórie
+      $parentCategories = [];
+      $currentCategory = $category;
+
+      while ($currentCategory) {
+        array_unshift($parentCategories, $currentCategory);
+        $currentCategory = $currentCategory->parent;
+      }
+
+      // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
+      $cart = Cart::where('user_id', Auth::id())->first();
+      $totalItems = $cart ? $cart->totalItems() : 0;
+
+      return view('includes.category-show', compact('category', 'products', 'totalItems', 'parentCategories'));
     }
 
     public function show(Product $product){
-        
+
          // Celkovy počet poloziek (zobrazuje sa pri cart ikonke)
         $cart = Cart::where('user_id', Auth::id())->first();
         $totalItems = $cart ? $cart->totalItems() : 0;
+
         return view('includes.product-show', compact('product', 'totalItems'));
     }
 }

@@ -35,6 +35,50 @@
 
             @if ($products->isNotEmpty())
                 <h2 class="text-2xl text-center font-bold mb-4 text-gray-800">Produkty :</h2>
+
+                <form action="{{route('category.view.show', $category->id)}}" method="get">
+
+                <div class="relative inline-block flex justify-end">
+
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" id="dropdownButton" type="button" onclick="toggleDropdown()" aria-expanded="false">
+                      Filtrovat podla
+                    </button>
+                    <ul class="absolute right-0 mt-12 w-48 bg-white border border-gray-300 rounded shadow-lg hidden" id="dropdownMenu" role="menu">
+                      <li>
+                        <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="price_low">
+                          Najlacnejšie
+                        </button>
+                      </li>
+                      <li>
+                        <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="price_high">
+                          Najdrahšie
+                        </button>
+                      </li>
+
+                      <li>
+                        <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="date_new">
+                          Najnovšie
+                        </button>
+                      </li>
+
+                      <li>
+                        <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="date_old">
+                          Najstaršie
+                        </button>
+                      </li>
+
+                      <li>
+                        <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="defualt">
+                          Predvolené
+                        </button>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                </form>
+
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     @foreach ($products as $product)
                         @include('includes.product-box', ['product' => $product])
@@ -46,5 +90,13 @@
 
         </div>
     </div>
+
+    <script>
+        function toggleDropdown() {
+          const menu = document.getElementById('dropdownMenu');
+          const isExpanded = menu.classList.contains('hidden');
+          menu.classList.toggle('hidden', !isExpanded);
+        }
+      </script>
 @endsection
 

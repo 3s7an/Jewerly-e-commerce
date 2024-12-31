@@ -27,10 +27,6 @@ class Category extends Model
         return $this->belongsToMany(Product::class, 'category_product');
     }
 
-    public function product(){
-        return $this->hasMany(Product::class);
-    }
-
        // Kategória môže mať viacero podkategórií
        public function subcategories()
        {

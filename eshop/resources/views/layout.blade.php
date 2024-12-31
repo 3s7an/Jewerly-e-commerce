@@ -15,10 +15,15 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
- <!-- Pismo -->
-<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&family=Playpen+Sans:wght@100;400;700;800&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {{-- BOOTSTRAP --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.min.js" integrity="sha512-eHx4nbBTkIr2i0m9SANm/cczPESd0DUEcfl84JpIuutE6oDxPhXvskMR08Wmvmfx5wUpVjlWdi82G5YLvqqJdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap-grid.min.css" integrity="sha512-zDDxSlYrbKTTfup/YyljmstpX+1jwjeg15AKS/fl26gRxfpD+HMr6dfuJQzCcFtoIEjf93SuCffose5gDQOZtg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Pismo -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;700&family=Playpen+Sans:wght@100;400;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <script>
     tailwind.config = {
@@ -37,7 +42,7 @@
 <title>Eshop</title>
 </head>
 
-<body class="bg-gray-100 font-playpen"> 
+<body class="bg-gray-100 font-playpen">
 
 
 
