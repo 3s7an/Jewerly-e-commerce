@@ -7,6 +7,8 @@
             <div class="md:w-1/2 mb-6 md:mb-0">
                 <img src="{{ $product->getImageURL() }}" class="w-full rounded-lg shadow-md transition-transform transform hover:scale-105" alt="{{ $product->name }}">
             </div>
+            
+
             <div class="md:w-1/2 md:pl-6 align-center justify-center">
                 <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ $product->name }}</h1>
                 <p class="text-lg text-gray-600 mb-2">Popis produktu</p>
@@ -19,12 +21,32 @@
                 <form action="{{ route('cart.add') }}" method="POST" class="mt-4">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button class="bg-yellow-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-yellow-600 transition duration-200 flex items-center justify-center mx-auto" type="submit" name="cart-send">
+                    <button class="bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-600 transition duration-200 flex items-center justify-center mx-auto" type="submit" name="cart-send">
                         <i class="fa-solid fa-cart-shopping mr-2"></i> Do košíku
                     </button>
                 </form>
             </div>
+            
         </div>
+        <hr>
+        <br>
+        <h1>Recenzie</h1>
+        
+    <p>
+
+    </p>
+    <br>
+
+    <form action="" method="post">
+    
+    <textarea id="review" name="review" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Vyborny produkt"></textarea>
+
+    <br>
+
+    <button class="bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-600 transition duration-200 flex items-center justify-center mx-auto" type="submit" name="review-send"> Odoslať </button>
+
+    </form>
+
     </div>
 </div>
 @endsection
