@@ -13,7 +13,7 @@
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <button class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-1 px-2 rounded-full w-full flex justify-center items-center text-xs md:text-sm lg:text-base" type="submit" name="cart-send">
-                    <i class="fa-solid fa-cart-shopping mr-2"></i> Do košíku
+                    <i class="fa-solid fa-cart-shopping mr-2"></i> Add to cart
                 </button>
             </form>
         </div>

@@ -1,1 +1,1 @@
-<h1 class="text-center">Moje objednávky</h1>
+<h1 class="text-center">My orders</h1>

@@ -5,7 +5,7 @@
 
     <div class="flex justify-center min-h-screen">
         <div class="container mx-4 sm:mx-6 lg:mx-8 rounded-lg mt-24">
-            <h1 class="text-center text-3xl font-bold mb-5 mt-10">Obsah tvojho košíku</h1>
+            <h1 class="text-center text-3xl font-bold mb-5 mt-10">Your cart items</h1>
 
             @if ($cartItems->isNotEmpty())
                 <!-- Karta pre zobrazenie položiek v košíku -->
@@ -16,13 +16,13 @@
                                 <tr>
                                     <th
                                         class="px-4 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Názov produktu</th>
+                                        Product name</th>
                                     <th
                                         class="px-4 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Množstvo</th>
+                                        Quantity</th>
                                     <th
                                         class="px-4 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Cena</th>
+                                        Price</th>
                                     <th class="px-4 py-4"></th>
                                 </tr>
                             </thead>
@@ -60,11 +60,11 @@
 
                     <!-- Celková suma a tlačidlo na pokračovanie -->
                     <div class="flex justify-between items-center mt-6">
-                        <h4 class="text-lg font-semibold">Celková cena: {{ $totalPrice }}<i
+                        <h4 class="text-lg font-semibold">Total price : {{ $totalPrice }}<i
                                 class="fa-solid fa-euro-sign fa-xs"></i></h4>
                         <form action="{{ route('order.index') }}">
                             <button
-                                class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Pokračovať</button>
+                                class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Continue</button>
                         </form>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-10 text-center">
                     <img src="https://cdn-icons-png.flaticon.com/512/2762/2762885.png" alt="prazdny kosik"
                         class="w-[10rem] mb-4 mx-auto">
-                    <p class="text-gray-600">V košíku nie sú žiadne položky</p>
+                    <p class="text-gray-600">There are no items in your cart</p>
                 </div>
             @endif
 
@@ -136,7 +136,7 @@
                     updateQuantity(itemId, newValue); // Call function to update the quantity
                 }
             });
-    
+
         });
     </script>
 

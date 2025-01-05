@@ -3,7 +3,7 @@
 @section('content')
     @include('includes.flash-message')
 
-    <h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Produkty</h1>
+    <h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Products</h1>
 
 
     <!-- Hidden Form Toggle Container -->
@@ -18,7 +18,7 @@
 
             <!-- Field for uploading product image -->
             <div class="mb-4">
-                <label for="product-image" class="block text-gray-700 font-semibold mb-1">Fotka produktu</label>
+                <label for="product-image" class="block text-gray-700 font-semibold mb-1">Image</label>
                 <input
                     class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2"
                     type="file" id="product-image" name="product-image">
@@ -29,7 +29,7 @@
 
             <!-- Field for product name -->
             <div class="mb-4">
-                <label for="product-name" class="block text-gray-700 font-semibold mb-1">Názov</label>
+                <label for="product-name" class="block text-gray-700 font-semibold mb-1">Name</label>
                 <input type="text"
                     class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-gray-500 focus:ring focus:ring-gray-200 focus:ring-opacity-50 p-2"
                     name="product-name" id="product-name">
@@ -40,7 +40,7 @@
 
             <!-- Product category selection -->
             <div class="mb-4">
-                <label for="product-category" class="block text-gray-700 font-semibold mb-1">Kategória</label>
+                <label for="product-category" class="block text-gray-700 font-semibold mb-1">Category</label>
                 <select
                     class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 p-2 appearance-none bg-white" name="product-category">
                     <option value="0" selected>Žiadna</option>
@@ -55,7 +55,7 @@
 
             <!-- Field for product description -->
             <div class="mb-4">
-                <label for="product-description" class="block text-gray-700 font-semibold mb-1">Popis</label>
+                <label for="product-description" class="block text-gray-700 font-semibold mb-1">Description</label>
                 <textarea
                     class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2"
                     name="product-description" id="product-description" rows="3"></textarea>
@@ -66,7 +66,7 @@
 
             <!-- Field for product price -->
             <div class="mb-4">
-                <label for="product-price" class="block text-gray-700 font-semibold mb-1">Cena</label>
+                <label for="product-price" class="block text-gray-700 font-semibold mb-1">Price</label>
                 <input type="text"
                     class="block w-full text-gray-900 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2"
                     name="product-price" id="product-price">
@@ -79,7 +79,7 @@
             <div class="mt-6">
                 <button type="submit"
                     class="w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                    Pridať
+                    Add
                 </button>
             </div>
 
@@ -91,7 +91,7 @@
     <div class="flex justify-center mt-4">
         <button
             class="toggler bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300">
-            Pridaj produkt
+            Add product
         </button>
     </div>
 
@@ -99,15 +99,11 @@
     <table class="min-w-full table table-hover mt-10">
         <thead class="bg-gray-50">
             <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id produktu</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazov produktu
-                </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategoria
-                    produktu</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Popis produktu
-                </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cena produktu
-                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
 
                 <th class="px-6 py-3"></th>
             </tr>
@@ -158,9 +154,9 @@
 
             // Button text based on the initial visibility of the form
             if ($formToggle.is(':visible')) {
-                $toggler.text('Skryť');
+                $toggler.text('Hide');
             } else {
-                $toggler.text('Pridať produkt');
+                $toggler.text('Add product');
             }
 
             $toggler.click(function(e) {
@@ -168,9 +164,9 @@
                 $formToggle.toggle();
 
                 if ($formToggle.is(':visible')) {
-                    $toggler.text('Skryť');
+                    $toggler.text('Hide');
                 } else {
-                    $toggler.text('Pridať produkt');
+                    $toggler.text('Add product');
                 }
             });
         });

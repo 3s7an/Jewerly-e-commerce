@@ -3,14 +3,14 @@
 @section('content')
 @include('includes.flash-message')
 
-<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Objednávky</h1>
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Orders</h1>
 
 <table class="table table-hover mt-5">
     <tr>
-        <td>Čislo objednavky</td>
-        <td>Email uživateľa</td>
-        <td>Cena objednávky</td>
-        <td>Status objednávky</td>
+        <td>Orders number</td>
+        <td>Users Email</td>
+        <td>Orders price</td>
+        <td>Orders status</td>
 
     </tr>
 

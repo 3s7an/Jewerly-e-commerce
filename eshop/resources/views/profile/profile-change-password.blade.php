@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2 class="text-center">Prihlasovacie údaje</h2>
+<h2 class="text-center">Login </h2>
 
 
 <div class="form-group mt-3">
@@ -13,30 +13,30 @@
     @enderror
     </div>
     <div class="form-group mt-3">
-        <label for="password" class="text-dark">Heslo:</label><br>
+        <label for="password" class="text-dark">Password:</label><br>
         <input type="password" name="password" id="password" class="form-control" value="{{Auth::user()->password}}">
         @error('password')
         <span class="d-block fs-6 text-danger mt-2">{{$message}}</span>
     @enderror
     </div>
 
-    <button class="btn btn-primary mt-4" type="submit">Zmeniť heslo</button>
+    <button class="btn btn-primary mt-4" type="submit">Change password</button>
 
 
 
 
 
-<h2 class="text-center mt-4 mb-4">Kontaktné údaje</h2>
+<h2 class="text-center mt-4 mb-4">Contact details</h2>
 <form method="get" action="{{ route('profile.edit', Auth::user()->id ) }}">
 
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <label for="firstName" class="form-label">Meno:</label>
+            <label for="firstName" class="form-label">Name :</label>
             <input type="text" class="form-control" id="firstName" value="" readonly>
         </div>
         <div class="col-md-6">
-            <label for="lastName" class="form-label">Priezvisko:</label>
+            <label for="lastName" class="form-label">Surname :</label>
             <input type="text" class="form-control" id="lastName" readonly>
         </div>
     </div>
@@ -44,22 +44,22 @@
 
 
     <div class="mb-3">
-        <label for="street" class="form-label">Ulica:</label>
+        <label for="street" class="form-label">Street :</label>
         <input type="text" class="form-control" id="street" readonly>
     </div>
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <label for="postalCode" class="form-label">PSČ:</label>
+            <label for="postalCode" class="form-label">Zipcode :</label>
             <input type="text" class="form-control" id="postalCode" readonly>
         </div>
         <div class="col-md-6">
-            <label for="city" class="form-label">Mesto:</label>
+            <label for="city" class="form-label">City :</label>
             <input type="text" class="form-control" id="city" readonly>
         </div>
     </div>
 
-    <button class="btn btn-primary mt-4" type="submit">Zmeniť údaje</button>
+    <button class="btn btn-primary mt-4" type="submit">Change details</button>
 </form>
 </div>
 

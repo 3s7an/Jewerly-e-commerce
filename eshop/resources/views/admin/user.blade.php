@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Uživatelia</h1>
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Users</h1>
 
 <!-- TABULKA -->
 
@@ -10,11 +10,11 @@
 
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Meno</th>
-      <th scope="col">Priezvisko</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
       <th scope="col">Email</th>
       <th scope="col">Admin</th>
-      <th scope="col">Editovať</th>
+      <th scope="col">Edit</th>
 
     </tr>
 
@@ -26,9 +26,9 @@
         <td>{{$user->surname}}</td>
         <td>{{$user->email}}</td>
         @if ($user->is_admin == 1)
-    <td>Áno</td>
+    <td>Yes</td>
 @else
-    <td>Nie</td>
+    <td>No</td>
 @endif
 
 

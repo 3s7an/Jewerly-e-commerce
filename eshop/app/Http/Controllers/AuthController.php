@@ -74,7 +74,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         // Presmerovanie na dashboard po úspešnej autentifikácii
-        return redirect()->route('dashboard')->with('succes', 'Prihlásenie bolo úspešné');
+        return redirect()->route('dashboard')->with('succes', 'Login was succesfull');
     }
 
     // Pri neúspešnej autentifikácii sa používateľ presmeruje späť na login s chybovou správou

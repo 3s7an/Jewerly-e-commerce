@@ -9,7 +9,7 @@
 <div class="min-h-screen flex flex-col">
     <div class="flex flex-col items-center justify-center w-full">
         <h1 class="text-center my-8 md:my-20 font-bold text-2xl md:text-4xl font-popins ">
-             Spoznajte naše produkty :
+            Discover Our Products :
         </h1>
 
         <div class="flex flex-wrap gap-4 justify-center w-full">

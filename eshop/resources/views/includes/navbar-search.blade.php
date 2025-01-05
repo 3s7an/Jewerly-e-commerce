@@ -4,7 +4,7 @@
     <div class="container mx-auto flex justify-between items-center py-4">
         <!-- Logo -->
         <a class="text-3xl font-bold" href="{{ route('dashboard') }}">
-            <span class="text-gray-900 font-playpen text-xxl sm:max-x:mx-4">Zlatníctvo</span>
+            <span class="text-gray-900 font-playpen text-xxl sm:max-x:mx-4">Jewerly</span>
         </a>
 
        <!-- Searchbar -->
@@ -13,8 +13,8 @@
 <div class="hidden md:block">
     <form class="flex" action="{{ route('dashboard') }}" method="get">
         @csrf
-        <input class="form-input w-full rounded-l-md border-1 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Search" name="search" id="search">
-        <button class="bg-gray-800 hover:bg-gray-900 text-white rounded-r-md px-4 py-2 border-2" type="submit">Vyhladať</button>
+        <input class="form-input w-full rounded-l-md border-1 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Type here..." name="search" id="search">
+        <button class="bg-gray-800 hover:bg-gray-900 text-white rounded-r-md px-4 py-2 border-2" type="submit">Search</button>
     </form>
     <div id="search-results" class="mt-2 text-center"></div>
 </div>
@@ -30,17 +30,17 @@
                     <i class="fa-solid fa-user text-2xl"></i>
                 </button>
                 <div id="user-dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10 hidden">
-                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('profile.index') }}">Profil</a>
-                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{route('my-orders.show')}}">Moje objednávky</a>
-                   
+                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('profile.index') }}">Profile</a>
+                    <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{route('my-orders.show')}}">My orders</a>
+
                     @if (Auth::user()->is_admin == 1)
                     <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="{{ route('admin.dashboard') }}">Admin panel</a>
                 @endif
-                    
+
                     <div class="border-t my-2"></div>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100" type="submit">Odhlásiť sa</button>
+                        <button class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-100" type="submit">Log out</button>
                     </form>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 
             @guest
             <!-- Guest sekcia -->
-            <a class="text-gray-800 hover:text-gray-900" href="{{ route('login') }}">Prihláste sa</a>
+            <a class="text-gray-800 hover:text-gray-900" href="{{ route('login') }}">Log in</a>
             @endguest
         </div>
     </div>

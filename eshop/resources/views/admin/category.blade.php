@@ -3,7 +3,7 @@
 @section('content')
 @include('includes.flash-message')
 
-<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Kategórie</h1>
+<h1 class="text-center mb-4 text-4xl font-bold text-gray-800">Categories</h1>
 
 
 <!-- Hidden Form Toggle Container -->
@@ -17,7 +17,7 @@
 
 
         <div class="mb-4">
-            <label for="category-img" class="block text-gray-700 font-semibold mb-2">Obrázok kategórie:</label>
+            <label for="category-img" class="block text-gray-700 font-semibold mb-2">Image:</label>
             <input type="file" name="category-img" id="category-img" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="">
             @error('category-img')
                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
@@ -27,7 +27,7 @@
 
 
         <div class="mb-4">
-            <label for="category-name" class="block text-gray-700 font-semibold mb-2">Názov kategórie:</label>
+            <label for="category-name" class="block text-gray-700 font-semibold mb-2">Name:</label>
             <input type="text" name="category-name" id="category-name" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Zadajte názov kategórie">
             @error('category-name')
                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
@@ -35,9 +35,9 @@
         </div>
 
         <div class="mb-4">
-            <label for="parent-id" class="block text-gray-700 font-semibold mb-2">Rodičovská kategória:</label>
+            <label for="parent-id" class="block text-gray-700 font-semibold mb-2">Parrent category:</label>
             <select name="parent-id" id="parent-id" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                <option value="0">Žiadna</option>
+                <option value="0">None</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -48,14 +48,14 @@
         </div>
 
         <button type="submit" class="w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300">
-            Pridať
+            Add
         </button>
     </form>
 </div>
 
 <div class="flex justify-center">
     <button type="button" class="toggler bg-gray-800 text-white font-semibold py-1 px-3 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300">
-        Pridať kategóriu
+        Add category
     </button>
 </div>
 
@@ -67,10 +67,10 @@
 <table class="min-w-full table table-hover mt-20">
     <thead class="bg-gray-50">
         <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id rodičovskej kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Názov rodičovskej kategorie</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nazov kategorie</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Parrent id</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Parrent name</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
 
             <th class="px-6 py-3 text-left"></th>
         </tr>
@@ -118,9 +118,9 @@ $(document).ready(function() {
 
     // Button text based on the initial visibility of the form
     if ($formToggle.is(':visible')) {
-        $toggler.text('Skryť');
+        $toggler.text('Hide');
     } else {
-        $toggler.text('Pridať kategóriu');
+        $toggler.text('Add category');
     }
 
     $toggler.click(function (e) {
@@ -128,9 +128,9 @@ $(document).ready(function() {
         $formToggle.toggle();
 
         if ($formToggle.is(':visible')) {
-            $toggler.text('Skryť');
+            $toggler.text('Hide');
         } else {
-            $toggler.text('Pridať kategóriu');
+            $toggler.text('Add category');
         }
     });
 });

@@ -5,7 +5,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 rounded-lg mt-24 bg-white shadow-lg">
 
             <nav class="breadcrumb mb-6 text-gray-600 mt-2">
-                <a href="/" class="hover:text-blue-500">Domov</a>
+                <a href="/" class="hover:text-blue-500">Home</a>
                 @foreach ($parentCategories as $parentCategory)
                     <span class="mx-1">&gt;</span>
                     <a href="{{ route('category.view.show', $parentCategory->id) }}" class="hover:text-blue-500">
@@ -34,42 +34,42 @@
             <hr class="mt-10 mb-6 border-gray-300">
 
             @if ($products->isNotEmpty())
-                <h2 class="text-2xl text-center font-bold mb-4 text-gray-800">Produkty :</h2>
+                <h2 class="text-2xl text-center font-bold mb-4 text-gray-800">Products :</h2>
 
                 <form action="{{route('category.view.show', $category->id)}}" method="get">
 
                 <div class="relative inline-block flex justify-end">
 
                     <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" id="dropdownButton" type="button" onclick="toggleDropdown()" aria-expanded="false">
-                      Filtrovat podla
+                      Filter by
                     </button>
                     <ul class="absolute right-0 mt-12 w-48 bg-white border border-gray-300 rounded shadow-lg hidden" id="dropdownMenu" role="menu">
                       <li>
                         <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="price_low">
-                          Najlacnejšie
+                          Lowest price
                         </button>
                       </li>
                       <li>
                         <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="price_high">
-                          Najdrahšie
+                          Highest price
                         </button>
                       </li>
 
                       <li>
                         <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="date_new">
-                          Najnovšie
+                          Newest
                         </button>
                       </li>
 
                       <li>
                         <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="date_old">
-                          Najstaršie
+                          Oldest
                         </button>
                       </li>
 
                       <li>
                         <button class="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" type="submit" name="defualt">
-                          Predvolené
+                          Default
                         </button>
                       </li>
 
@@ -85,7 +85,7 @@
                     @endforeach
                 </div>
             @else
-                <p class="text-center text-gray-600">Žiadne produkty nie sú k dispozícii v tejto kategórii.</p>
+                <p class="text-center text-gray-600">There are no products in this category</p>
             @endif
 
         </div>

@@ -3,11 +3,11 @@
 @section('content')
     @include('includes.flash-message')
 
-    <h1 class="text-center text-2xl font-semibold mt-24 mb-8">Zhrnutie objednávky</h1>
+    <h1 class="text-center text-2xl font-semibold mt-24 mb-8">Order summary</h1>
 
     <!-- Dodacie údaje -->
     <div class="bg-white shadow-md rounded-lg p-6 mb-6 max-w-2xl mx-auto border border-gray-200">
-        <h3 class="text-xl font-semibold mb-4">Dodacie údaje</h3>
+        <h3 class="text-xl font-semibold mb-4">Shipping information</h3>
         <hr class="my-4">
         <form action="{{ route('order.store') }}" method="POST">
             @csrf
@@ -16,25 +16,25 @@
                 @if (!Auth::check())
                     <!-- Auth sekcia -->
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Meno:</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name :</label>
                         <input type="text" name="name" id="name"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     </div>
 
                     <div class="mb-4">
-                        <label for="surname" class="block text-sm font-medium text-gray-700">Priezvisko:</label>
+                        <label for="surname" class="block text-sm font-medium text-gray-700">Surname :</label>
                         <input type="text" name="surname" id="surname"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email :</label>
                         <input type="email" name="email" id="email"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2">
                     </div>
 
                     <div class="mb-4">
-                        <label for="address" class="block text-sm font-medium text-gray-700">Dodacia adresa:</label>
+                        <label for="address" class="block text-sm font-medium text-gray-700">Delivery addres :</label>
                         <input type="text" name="street" id="street"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2">
                         <input type="text" name="zipcode" id="zipcode"
@@ -45,28 +45,28 @@
                 @else
                     <!-- Guest sekcia -->
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Meno:</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name :</label>
                         <input type="text" name="name" id="name"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
                             value="{{ Auth::user()->name }}" >
                     </div>
 
                     <div class="mb-4">
-                        <label for="surname" class="block text-sm font-medium text-gray-700">Priezvisko:</label>
+                        <label for="surname" class="block text-sm font-medium text-gray-700">Surname :</label>
                         <input type="text" name="surname" id="surname"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
                             value="{{ Auth::user()->surname }}" >
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email :</label>
                         <input type="email" name="email" id="email"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100" readonly
                             value="{{ Auth::user()->email }}" >
                     </div>
 
                     <div class="mb-4">
-                        <label for="address" class="block text-sm font-medium text-gray-700">Dodacia adresa:</label>
+                        <label for="address" class="block text-sm font-medium text-gray-700">Delivery addres :</label>
                         <input type="text" name="street" id="street"
                             class="form-input mt-1 block w-full border border-gray-300 rounded-lg p-2 bg-gray-100"
                             value="{{ Auth::user()->street }}" >
@@ -84,12 +84,12 @@
 
     <!-- Platba sekcia -->
     <div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto border border-gray-200">
-        <h3 class="text-xl font-semibold mb-4">Platba</h3>
+        <h3 class="text-xl font-semibold mb-4">Payment</h3>
         <hr class="my-4">
 
             <div class="flex items-center mb-4">
                 <input type="radio" name="payment_method" value="Dobierkou" id="platba" checked class="mr-2">
-                <label for="platba" class="text-sm font-medium text-gray-700">Dobierkou</label>
+                <label for="platba" class="text-sm font-medium text-gray-700">Cash on Delivery (COD)</label>
             </div>
 
 
@@ -98,7 +98,7 @@
 
     <!-- Kosik sekcia -->
     <div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto border border-gray-200 mt-6 mb-10">
-        <h3 class="text-xl font-semibold mb-4">Obsah košíku</h3>
+        <h3 class="text-xl font-semibold mb-4">Cart items</h3>
         <hr class="my-4">
 
         @foreach ($cartItems as $item)
@@ -124,15 +124,13 @@
         <div class="flex justify-between items-end">
 
             <a href="{{ route('cart.index') }}"
-                class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg transition ease-in-out duration-150">Spať
-                do košíku</a>
+                class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg transition ease-in-out duration-150">Back to the cart</a>
 
 
             <div class="flex flex-col items-end">
-                <h4 class="text-xl font-semibold mb-2">Celková cena: {{ $totalPrice }} EUR</h4>
+                <h4 class="text-xl font-semibold mb-2">Total price: {{ $totalPrice }} EUR</h4>
                 <button type="submit"
-                    class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg transition ease-in-out duration-150">Potvrdiť
-                    objednávku</button>
+                    class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg transition ease-in-out duration-150">Confirm order</button>
             </div>
         </div>
     </div>
