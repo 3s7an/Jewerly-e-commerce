@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\UserIsAdmin;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/products/{product}', [DashboardController::class, 'show'])->name('products.show');
 
 // Admin routy
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     Route::get('/category/add', [CategoryController::class, 'interIndex'])->name('admin.intercategory');
 
-     Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
     Route::delete('/category{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
@@ -59,8 +60,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.order.show');
 
     Route::put('/orders/{order}', [OrderController::class, 'update'])->name('admin.order.update');
-
-
 });
 
 
@@ -104,6 +103,5 @@ Route::post('/profile/update-data', [ProfileController::class, 'updateUserData']
 
 Route::get('/my-orders', [ProfileController::class, 'myOrdersShow'])->name('my-orders.show');
 
-
-
-
+//Review routy 
+Route::get('/review', [ReviewController::class, 'store'])->name('review.store');

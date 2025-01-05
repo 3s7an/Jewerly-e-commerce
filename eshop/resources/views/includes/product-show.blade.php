@@ -53,22 +53,27 @@
             </div>
             
         </div>
-        <hr>
-        <br>
-        <h1>Recenzie</h1>
+        
+        
+        <h1 class="mt-6 text-3xl font-bold">Recenzie</h1>
         
     <p>
 
     </p>
     <br>
 
-    <form method="post">
+    <form action ="{{route('review.store')}}" method="get">
+
+      <label for ="rating">Počet hviezdičiek</label>
+      <input type ="number" name="rating" id="rating" min="1" max="5"  class=" border rounded-md border-gray-300 my-2">
+      
+      
     
-    <textarea id="review" name="review" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Vyborny produkt"></textarea>
+      <textarea id="text" name="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 my-3" placeholder="Vyborny produkt"></textarea>
 
-    <br>
+      
 
-    <button class="bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-600 transition duration-200 flex items-center justify-center mx-auto" type="submit" name="review-send"> Odoslať </button>
+      <button class="bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-600 transition duration-200" type="submit" name="review-send"> Odoslať </button>
 
     </form>
 

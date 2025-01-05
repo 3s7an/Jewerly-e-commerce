@@ -25,6 +25,10 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+
     public function getImageURL(){
         if($this->image){
             return url('storage/' . $this->image);
