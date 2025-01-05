@@ -67,6 +67,7 @@
       <label for ="rating">Počet hviezdičiek</label>
       <input type ="number" name="rating" id="rating" min="1" max="5"  class=" border rounded-md border-gray-300 my-2">
       
+      <input type="hidden" name="product_id" value="{{$product->id}}">
       
     
       <textarea id="text" name="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 my-3" placeholder="Vyborny produkt"></textarea>
