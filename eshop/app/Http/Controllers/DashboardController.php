@@ -90,7 +90,9 @@ class DashboardController extends Controller
         $cart = Cart::where('user_id', Auth::id())->first();
         $totalItems = $cart ? $cart->totalItems() : 0;
 
-        return view('includes.product-show', compact('product', 'totalItems'));
+        $reviews = $product->review;
+
+        return view('includes.product-show', compact('product', 'totalItems', 'reviews'));
     }
 }
 

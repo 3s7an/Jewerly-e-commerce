@@ -1,6 +1,28 @@
 @extends('layout')
 
 @section('content')
+
+<style>
+    /* Hover behavior: on hover, all stars before the hovered one should also turn yellow */
+    .peer:hover ~ .star {
+        color: #fbbf24; /* Tailwind yellow-400 */
+    }
+
+    /* Checked behavior: when a star is checked, all previous stars should be yellow */
+    .peer-checked ~ .star {
+        color: #fbbf24; /* Tailwind yellow-500 */
+    }
+
+    /* Hover behavior on individual stars */
+    .peer:hover ~ .star:hover,
+    .peer:hover ~ .star ~ .star:hover,
+    .peer:hover ~ .star ~ .star ~ .star:hover,
+    .peer:hover ~ .star ~ .star ~ .star ~ .star:hover {
+        color: #fbbf24; /* Tailwind yellow-400 */
+    }
+</style>
+
+
 <div class="flex justify-center min-h-screen bg-gray-100 py-12">
     <div class="container mx-auto max-w-7xl rounded-lg bg-white shadow-lg p-6 mt-24">
         <div class="flex flex-col md:flex-row">
@@ -55,23 +77,53 @@
         </div>
 
 
-        <h1 class="mt-6 text-3xl font-bold">Recenzie</h1>
+        <h1 class="mt-6 text-3xl font-bold ml-3">Reviews</h1>
 
-    <p>
+        @foreach ($reviews as $review)
 
-    </p>
+
+          <div class="w-full bg-white p-6 rounded-lg shadow-md my-2">
+              <p class="text-gray-700 text-lg mb-4">{{ $review->text ?? 'No text available' }}</p>
+              <p class="text-yellow-500 font-bold mb-2">Rating : {{ $review->rating ?? 'N/A' }} / 5</p>
+              <p class="text-gray-500 text-sm">{{ $review->user->name ?? 'Anonymous' }}</p>
+          </div>
+
+
+
+
+        @endforeach
     <br>
 
     <form action ="{{route('review.store')}}" method="get">
 
-      <label for ="rating">Počet hviezdičiek</label>
-      <input type ="number" name="rating" id="rating" min="1" max="5"  class=" border rounded-md border-gray-300 my-2">
-
       <input type="hidden" name="product_id" value="{{$product->id}}">
 
+      <div class="flex items-center space-x-2 my-2">
+        <label for="rating" class="mr-2">Rating</label>
+        <div class="flex items-center flex-row-reverse">
+            <!-- Star 5 -->
+            <input type="radio" id="star1" name="rating" value="5" class="hidden peer" />
+            <label for="star1" class="star text-gray-400 cursor-pointer text-3xl peer-checked:text-yellow-500 hover:text-yellow-500 peer-hover:text-yellow-500">&#9733;</label>
 
-      <textarea id="text" name="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 my-3" placeholder="Vyborny produkt"></textarea>
+            <!-- Star 4 -->
+            <input type="radio" id="star2" name="rating" value="4" class="hidden peer" />
+            <label for="star2" class="star text-gray-400 cursor-pointer text-3xl peer-checked:text-yellow-500 hover:text-yellow-500 peer-hover:text-yellow-500">&#9733;</label>
 
+            <!-- Star 3 -->
+            <input type="radio" id="star3" name="rating" value="3" class="hidden peer" />
+            <label for="star3" class="star text-gray-400 cursor-pointer text-3xl peer-checked:text-yellow-500 hover:text-yellow-500 peer-hover:text-yellow-500">&#9733;</label>
+
+            <!-- Star 2 -->
+            <input type="radio" id="star4" name="rating" value="2" class="hidden peer" />
+            <label for="star4" class="star text-gray-400 cursor-pointer text-3xl peer-checked:text-yellow-500 hover:text-yellow-500 peer-hover:text-yellow-500">&#9733;</label>
+
+            <!-- Star 1 -->
+            <input type="radio" id="star5" name="rating" value="1" class="hidden peer" />
+            <label for="star5" class="star text-gray-400 cursor-pointer text-3xl peer-checked:text-yellow-500 hover:text-yellow-500 peer-hover:text-yellow-500">&#9733;</label>
+        </div>
+    </div>
+
+      <textarea id="text" name="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 my-3" placeholder="Write your impressions of the product"></textarea>
 
 
       <button class="bg-gray-500 text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-600 transition duration-200" type="submit" name="review-send"> Send </button>

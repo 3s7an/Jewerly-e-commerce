@@ -16,7 +16,7 @@ class ReviewController extends Controller
         ]);
 
         Review::create([
-            'user_id' => Auth::id(),
+            'user_id' => '1',
             'product_id' => $request->product_id,
             'text' => $request->text,
             'rating' => $request->rating,

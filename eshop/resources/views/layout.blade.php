@@ -39,6 +39,25 @@
     }
 </script>
 
+<style>
+    .peer:hover ~ .star {
+        color: #fbbf24; /* Tailwind yellow-400 */
+    }
+
+    /* Checked behavior: when a star is checked, all previous stars should be yellow */
+    .peer-checked ~ .star {
+        color: #fbbf24; /* Tailwind yellow-500 */
+    }
+
+    /* Hover behavior on individual stars */
+    .peer:hover ~ .star:hover,
+    .peer:hover ~ .star ~ .star:hover,
+    .peer:hover ~ .star ~ .star ~ .star:hover,
+    .peer:hover ~ .star ~ .star ~ .star ~ .star:hover {
+        color: #fbbf24; /* Tailwind yellow-400 */
+    }
+</style>
+
 <title>Eshop</title>
 </head>
 
