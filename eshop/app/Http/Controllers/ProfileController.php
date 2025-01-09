@@ -38,12 +38,13 @@ class ProfileController extends Controller
 
     // Vyplnenie údajov
     $user->fill([
-        'name' => $validatedData['firstName'],
-        'surname' => $validatedData['lastName'],
-        'email' => $validatedData['email'],
-        'street' => $validatedData['street'],
-        'zipcode' => $validatedData['postalCode'],
-        'city' => $validatedData['city']
+        'name'         => $validatedData['firstName'],
+        'surname'      => $validatedData['lastName'],
+        'email'       => $validatedData['email'],
+        'street'      => $validatedData['street'],
+        'zipcode'     => $validatedData['postalCode'],
+        'city'        => $validatedData['city'],
+        'can_review'  => 1  
     ]);
 
     // Uloženie údajov
