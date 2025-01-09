@@ -86,6 +86,8 @@
               <p class="text-gray-700 text-lg mb-4">{{ $review->text ?? 'No text available' }}</p>
               <p class="text-yellow-500 font-bold mb-2">Rating : {{ $review->rating ?? 'N/A' }} / 5</p>
               <p class="text-gray-500 text-sm">{{ $review->user->name ?? 'Anonymous' }}</p>
+              <a href="">delete</a>
+              <a href="">edit</a>
           </div>
 
 

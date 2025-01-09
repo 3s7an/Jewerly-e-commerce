@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -11,8 +12,8 @@ class ReviewController extends Controller
 {
     public function store(Request $request)
     {   
-        if(!Gate::allows('can_review')){
-            return redirect()->back();
+        if(!Gate::allows('can_review_create')){
+            return redirect()->back('You do not have permission to create review. First fill your profile.');
         }
 
         $request->validate([
@@ -28,5 +29,15 @@ class ReviewController extends Controller
         ]);
 
         return redirect()->back();
+    }
+    
+    public function destroy(Review $review){
+        if(! Gate::allows('can_review_edit')){
+            return redirect()->back()->with('error', 'You do not have permission to delete this review.');
+        }
+
+        $review->delete();
+
+        return redirect()->back()->with('success', 'Review deleted successfully.');
     }
 }
