@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('collections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->string('name', 255);
+            $table->text('description');
             $table->unsignedBigInteger('product_id');
-            $table->text('text');
-            $table->tinyInteger('rating')->unsigned();
+            $table->boolean('is_active')->default(0);
+            $table->boolean('discount')->default(0);
+            $table->unsignedTinyInteger('discount_rate')->default(0);
             $table->timestamps();
 
-            // fk
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('collections');
     }
 };

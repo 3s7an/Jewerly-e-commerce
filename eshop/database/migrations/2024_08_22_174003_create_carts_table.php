@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->$table->decimal('total_price', 8, 2);
             $table->timestamps();
 
-            // Cudzí klúč
+            // fk
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -29,4 +30,3 @@ return new class extends Migration
         Schema::dropIfExists('carts');
     }
 };
-

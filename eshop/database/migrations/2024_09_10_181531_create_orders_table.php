@@ -18,6 +18,9 @@ return new class extends Migration
             $table->decimal('total_price', 8, 2);
             $table->string('status')->default('pending');
             $table->timestamps();
+
+            // fk
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
