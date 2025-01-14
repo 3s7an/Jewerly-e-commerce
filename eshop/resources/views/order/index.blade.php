@@ -9,7 +9,7 @@
     <div class="bg-white shadow-md rounded-lg p-6 mb-6 max-w-2xl mx-auto border border-gray-200">
         <h3 class="text-xl font-semibold mb-4">Shipping information</h3>
         <hr class="my-4">
-        <form action="{{ route('order.store') }}" method="POST">
+        {{-- <form action="{{ route('order.store') }}" method="POST"> --}}
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -117,6 +117,18 @@
                 </div>
             </div>
         @endforeach
+
+        <form action="{{ route('stripe.checkout') }}" method="POST">
+            @csrf
+            <script 
+                src="https://js.stripe.com/v3/"
+                data-key="{{ env('STRIPE_KEY') }}"
+                data-amount="1000" 
+                data-name="Laravel E-shop" 
+                data-description="Objednávka"
+                data-locale="auto">
+            </script>
+            <button type="submit">Zaplať teraz</button>
 
         <hr class="my-4">
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\UserIsAdmin;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -92,6 +93,20 @@ Route::middleware('auth')->group(function () {
 Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
+
+Route::post('/checkout', function (Request $request) {
+    $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+    $paymentIntent = $stripe->paymentIntents->create([
+        'amount' => 1000, // Suma v centoch (napr. 10,00 EUR = 1000)
+        'currency' => 'eur',
+        'payment_method_types' => ['card'],
+    ]);
+
+    return response()->json([
+        'client_secret' => $paymentIntent->client_secret,
+    ]);
+})->name('stripe.checkout');
 
 
 // Profile routy
