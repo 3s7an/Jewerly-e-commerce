@@ -31,14 +31,11 @@
                 </div>
             @endif
 
-            <hr class="mt-10 mb-6 border-gray-300">
-
             @if ($products->isNotEmpty())
-                <h2 class="text-2xl text-center font-bold mb-4 text-gray-800">Products :</h2>
 
                 <form action="{{route('category.view.show', $category->id)}}" method="get">
 
-                <div class="relative inline-block flex justify-end">
+                <div class="relative inline-block flex justify-end my-4">
 
                     <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" id="dropdownButton" type="button" onclick="toggleDropdown()" aria-expanded="false">
                       Filter by
@@ -79,11 +76,12 @@
                 </form>
 
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     @foreach ($products as $product)
                         @include('includes.product-box', ['product' => $product])
                     @endforeach
                 </div>
+
             @else
                 <p class="text-center text-gray-600">There are no products in this category</p>
             @endif
