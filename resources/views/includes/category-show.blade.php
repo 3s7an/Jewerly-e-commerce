@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="flex justify-center min-h-screen bg-gray-100">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 rounded-lg mt-24 bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow-lg">
 
-            <nav class="breadcrumb mb-6 text-gray-600 mt-2">
-                <a href="/" class="hover:text-blue-500">Home</a>
+            <nav class="breadcrumb mb-6 text-gray-600 mt-4">
+                <a href="/" class="hover:text-blue-500 font-bold">Home</a>
                 @foreach ($parentCategories as $parentCategory)
                     <span class="mx-1">&gt;</span>
-                    <a href="{{ route('category.view.show', $parentCategory->id) }}" class="hover:text-blue-500">
+                    <a href="{{ route('category.view.show', $parentCategory->id) }}" class="hover:text-blue-500 font-bold">
                         {{ $parentCategory->name }}
                     </a>
                 @endforeach

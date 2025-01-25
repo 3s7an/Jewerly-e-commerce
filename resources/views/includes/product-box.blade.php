@@ -1,7 +1,7 @@
 <div class="mb-6 shadow-lg bg-white rounded-xl overflow-hidden mx-4 flex flex-col w-64 h-96 transition-transform duration-300 hover:scale-105">
     <!-- Obrázok produktu (väčšina boxu) -->
     <div class="flex justify-center items-center h-3/4 bg-gray-100">
-        <img src="{{$product->getImageURL()}}" alt="{{ $product->name }}" class="w-40 h-40 object-cover">
+        <img src="{{$product->getImageURL()}}" alt="{{ $product->name }}" class="w-40 h-40 object-cover rounded-lg">
     </div>
 
     <!-- Obsah produktu -->

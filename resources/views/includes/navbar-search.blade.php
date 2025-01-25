@@ -11,17 +11,17 @@
 
 
 <div class="hidden md:block">
-    <form class="flex" action="{{ route('dashboard') }}" method="get">
-        @csrf
-        <input class="form-input w-full rounded-l-md border-1 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Type here..." name="search" id="search">
-        <button class="bg-gray-800 hover:bg-gray-900 text-white rounded-r-md px-4 py-2 border-2" type="submit">Search</button>
-    </form>
-    <div id="search-results" class="mt-2 text-center"></div>
+
 </div>
 
 
 
         <div class="flex items-center space-x-4">
+            <form class="flex" action="{{ route('dashboard') }}" method="get">
+                @csrf
+                <input class="form-input w-full rounded-l-md border-1 border-gray-700 focus:outline-none px-4 py-2" type="search" placeholder="Type here..." name="search" id="search">
+                <button class="bg-gray-800 hover:bg-gray-900 text-white rounded-r-md px-4 py-2 border-2" type="submit">Search</button>
+            </form>
             <!-- Auth linky -->
             @auth
             <div class="relative">
@@ -72,6 +72,8 @@
         </form>
     </div>
 </nav>
+
+<div id="search-results" class="mt-2 text-center"></div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

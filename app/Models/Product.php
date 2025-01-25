@@ -21,13 +21,20 @@ class Product extends Model
     ];
 
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+    public function categories(){
+      return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
     public function review(){
-        return $this->hasMany(Review::class);
+      return $this->hasMany(Review::class);
+    }
+
+    public function orderItems(){
+      return $this->hasMany(OrderItem::class, 'product_id');
+    }
+
+    public function CartItems(){
+      return $this->hasMany(CartItem::class, 'product_id');
     }
 
     public function getImageURL(){
@@ -36,5 +43,16 @@ class Product extends Model
         }
         return 'https://via.placeholder.com/800x400';
     }
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function ($product) {
+        $product->orderItems()->delete();
+        $product->cartItems()->delete();
+    });
+}
+
 }
 

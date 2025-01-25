@@ -23,8 +23,8 @@
 </style>
 
 
-<div class="flex justify-center min-h-screen bg-gray-100 py-12">
-    <div class="container mx-auto max-w-7xl rounded-lg bg-white shadow-lg p-6 mt-24">
+<div class="flex justify-center min-h-screen bg-gray-100">
+    <div class="container mx-auto max-w-7xl bg-white shadow-lg p-6">
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2 mb-6 md:mb-0">
                 <div class="relative w-full overflow-hidden">
