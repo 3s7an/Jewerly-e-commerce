@@ -58,7 +58,7 @@
     }
 </style>
 
-<title>Eshop</title>
+<title>{{ config('app.name') }}</title>
 </head>
 
 <body class="bg-gray-100 font-playpen">
