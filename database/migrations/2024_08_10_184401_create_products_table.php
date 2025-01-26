@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->decimal('price', 8, 2);
+            $table->unsignedBigInteger('collection_id');
             $table->timestamps();
+
+            // fk
+            $table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');
         });
     }
 

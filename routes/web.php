@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -61,6 +62,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.order.show');
 
     Route::put('/orders/{order}', [OrderController::class, 'update'])->name('admin.order.update');
+
+    Route::get('/collections', [CollectionController::class, 'index'])->name('admin.collections');
+
+    Route::post('/collections', [CollectionController::class, 'store'])->name('collections.store');
 });
 
 
@@ -118,5 +123,5 @@ Route::post('/profile/update-data', [ProfileController::class, 'updateUserData']
 
 Route::get('/my-orders', [ProfileController::class, 'myOrdersShow'])->name('my-orders.show');
 
-//Review routy 
+//Review routy
 Route::get('/review', [ReviewController::class, 'store'])->name('review.store');

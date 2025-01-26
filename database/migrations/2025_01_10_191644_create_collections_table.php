@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->default('');
             $table->string('name', 255);
             $table->text('description');
             $table->unsignedBigInteger('product_id');
