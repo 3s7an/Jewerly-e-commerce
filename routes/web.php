@@ -99,21 +99,6 @@ Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
 
-Route::post('/checkout', function (Request $request) {
-    $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-
-    $paymentIntent = $stripe->paymentIntents->create([
-        'amount' => 1000, // Suma v centoch (napr. 10,00 EUR = 1000)
-        'currency' => 'eur',
-        'payment_method_types' => ['card'],
-    ]);
-
-    return response()->json([
-        'client_secret' => $paymentIntent->client_secret,
-    ]);
-})->name('stripe.checkout');
-
-
 // Profile routy
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 

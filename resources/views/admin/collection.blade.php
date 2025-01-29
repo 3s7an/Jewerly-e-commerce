@@ -11,7 +11,7 @@
     <div class="flex justify-center">
         <!-- This div is empty but can be used for further content or styling -->
     </div>
-    <form action="{{ route('category.store') }}" method="post" class="p-6 border rounded-lg shadow-lg bg-white w-1/2 mx-auto mb-5" enctype="multipart/form-data">
+    <form action="{{ route('collections.store') }}" method="post" class="p-6 border rounded-lg shadow-lg bg-white w-1/2 mx-auto mb-5" enctype="multipart/form-data">
         @csrf
 
 
@@ -35,6 +35,15 @@
         </div>
 
         <div class="mb-4">
+            <label for="collection-description" class="block text-gray-700 font-semibold mb-2">Description:</label>
+            <textarea name="collection-description" id="collection-description" rows="4" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Enter collection description..."></textarea>
+
+            @error('collection-description')
+                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-4">
             <label for="products" class="block text-gray-700 font-semibold mb-2">Products:</label>
             <select name="products[]" id="products" class="choices block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" multiple>
                 @foreach ($products as $product)
@@ -48,8 +57,8 @@
 
         <div class="mb-4">
             <label for="collection-discountrate" class="block text-gray-700 font-semibold mb-2">Discount rate:</label>
-            <input type="number" name="collection-discount" id="collection-discount" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="">
-            @error('collection-discount')
+            <input type="number" name="collection-discountrate" id="collection-discountrate" class="block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="">
+            @error('collection-discountrate')
                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
             @enderror
         </div>
