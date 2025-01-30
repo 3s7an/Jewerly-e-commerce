@@ -25,6 +25,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    {{-- jQuery --}}
+    @vite(['resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
 <script>
     tailwind.config = {
       theme: {
@@ -83,15 +88,7 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        // Toggle visibility of auth links when hamburger icon is clicked
-        $('#hamburger-icon').click(function() {
-            $('#auth-links').toggle();
-        });
-    });
-    </script>
+
 </body>
 </html>
 

@@ -15,6 +15,11 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
+    {{-- jQuery --}}
+    @vite(['resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
     <title>Admin panel</title>
 
     <style>

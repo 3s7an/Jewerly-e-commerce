@@ -144,31 +144,4 @@
         </tbody>
     </table>
     <!-- END OF TABLE -->
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var $formToggle = $('.form_toggle');
-            var $toggler = $('.toggler');
-
-            // Button text based on the initial visibility of the form
-            if ($formToggle.is(':visible')) {
-                $toggler.text('Hide');
-            } else {
-                $toggler.text('Add product');
-            }
-
-            $toggler.click(function(e) {
-                e.preventDefault();
-                $formToggle.toggle();
-
-                if ($formToggle.is(':visible')) {
-                    $toggler.text('Hide');
-                } else {
-                    $toggler.text('Add product');
-                }
-            });
-        });
-    </script>
 @endsection

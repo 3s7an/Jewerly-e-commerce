@@ -20,26 +20,3 @@
     </ul>
 </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Na začiatku skry všetky deti kategórie
-    $('.children').hide();
-
-    // Pridaj kliknutie na kategórie, ktoré majú deti
-    $('.has-children').on('click', function(e) {
-        e.preventDefault();  // Zabránime predvolenému správaniu odkazu
-
-        // Nájdeme prislúchajúce podkategórie (deti)
-        var children = $(this).next('.children');
-
-        // Skryj všetky ostatné otvorené podkategórie, ak ich nepotrebujeme nechať otvorené
-        $('.children').not(children).slideUp();
-
-        // Zobraz alebo skry konkrétne podkategórie
-        children.slideToggle();
-    });
-});
-</script>

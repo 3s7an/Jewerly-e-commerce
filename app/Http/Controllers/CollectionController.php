@@ -70,9 +70,6 @@ class CollectionController extends Controller
 
         dd($validatedData['products'], $collection->id);
 
-
-
-
         return redirect()->route('admin.collections')->with('success', 'Collection created successfully.');
 
 

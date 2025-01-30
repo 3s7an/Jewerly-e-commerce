@@ -121,43 +121,4 @@
     </tbody>
 </table>
 
-{{-- {{ $collections->links() }} --}}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$(document).ready(function() {
-    var $formToggle = $('.form_toggle');
-    var $toggler = $('.toggler');
-
-    // Button text based on the initial visibility of the form
-    if ($formToggle.is(':visible')) {
-        $toggler.text('Hide');
-    } else {
-        $toggler.text('Add collection');
-    }
-
-    $toggler.click(function (e) {
-        e.preventDefault();
-        $formToggle.toggle();
-
-        if ($formToggle.is(':visible')) {
-            $toggler.text('Hide');
-        } else {
-            $toggler.text('Add collection');
-        }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-        const selectElement = document.getElementById('products');
-        const choices = new Choices(selectElement, {
-            removeItemButton: true,
-            searchEnabled: true,
-            itemSelectText: '',
-            placeholder: true,
-            placeholderValue: 'Choose products to collection...',
-        });
-    });
-</script>
 @endsection

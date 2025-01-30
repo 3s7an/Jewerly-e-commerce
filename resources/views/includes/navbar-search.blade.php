@@ -76,56 +76,8 @@
 <div id="search-results" class="mt-2 text-center"></div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$(document).ready(function() {
-        // Toggler
-    $('#user-dropdown-toggle').click(function() {
-        $('#user-dropdown-menu').slideToggle("fast"); //
-    });
 
 
-    $(document).click(function(e) {
-        if (!$(e.target).closest('#user-dropdown-toggle, #user-dropdown-menu').length) {
-            $('#user-dropdown-menu').hide();
-        }
-    });
 
-
-    // Searchbar
-    $('#search').on('input', function() {
-        const query = $(this).val();
-
-        if (query.length >= 2) {
-            $.ajax({
-                url: '{{route("search")}}',
-                method: 'GET',
-                data: { search: query },
-                success: function(data) {
-
-                    // Vyčistíme predchádzajúce výsledky
-                    $('#search-results').empty();
-
-                    // Predpokladáme, že 'data' obsahuje pole produktov
-                    if (data.length > 0) {
-                        $.each(data, function(index, product) {
-                            console.log(product.id);
-                            $('#search-results').append('<div class="result-item"><a href="{{ url("products") }}/' + product.id + '">' + product.name + '</a></div>');
-                        });
-                    } else {
-                        $('#search-results').append('<div>Žiadne výsledky</div>');
-                    }
-                },
-                error: function() {
-                    $('#search-results').empty().append('<div>Chyba pri vyhľadávaní</div>');
-                }
-            });
-        } else {
-            $('#search-results').empty(); // Vycistime výsledky, ak je menej ako 2 znaky
-        }
-    });
-});
-</script>
 
 

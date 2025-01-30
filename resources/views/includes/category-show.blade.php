@@ -89,12 +89,5 @@
         </div>
     </div>
 
-    <script>
-        function toggleDropdown() {
-          const menu = document.getElementById('dropdownMenu');
-          const isExpanded = menu.classList.contains('hidden');
-          menu.classList.toggle('hidden', !isExpanded);
-        }
-      </script>
 @endsection
 
